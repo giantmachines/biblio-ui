@@ -1,0 +1,8 @@
+$baseClass: app;
+
+.#{$baseClass} {
+}
+
+:export {
+  baseClass: $baseClass
+}
