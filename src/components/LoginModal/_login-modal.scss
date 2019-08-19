@@ -1,0 +1,17 @@
+$baseClass: loginModal;
+
+.#{$baseClass} {
+   .close {
+     height: 20.62px;
+     width: 20.62px;
+     color: #7BA98F;
+   }
+
+  .right {
+    float: right;
+  }
+}
+
+:export {
+  baseClass: $baseClass
+}
