@@ -2,11 +2,16 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { number, withKnobs } from '@storybook/addon-knobs';
 
-import LoginModal from './LoginModal';
+import Dialog from '../layout/Dialog';
+import LoginForm from "./LoginForm";
 
-storiesOf('LoginModal', module)
+storiesOf('Dialog', module)
   .addDecorator(withKnobs)
   .add('default', () => {
 
-      return (<LoginModal visible={true} />);
+      return (
+          <Dialog visible={true}>
+              <LoginForm />
+          </Dialog>
+      );
   });

@@ -1,15 +1,23 @@
 $baseClass: loginModal;
 
 .#{$baseClass} {
+  display: none;
+
    .close {
      height: 20.62px;
      width: 20.62px;
      color: #7BA98F;
+     cursor: pointer;
+     font-family: "Arial Unicode MS";
    }
 
   .right {
     float: right;
   }
+}
+
+.on {
+  display: inline-block;
 }
 
 :export {

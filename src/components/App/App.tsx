@@ -8,11 +8,14 @@ import { baseClass } from './_app.scss';
 import DetailsPage from '../DetailsPage';
 import HomePage from '../HomePage';
 import configureStore from '../../configureStore';
+import Dialog from "../layout/Dialog";
+import LoginForm from "../LoginModal/LoginForm";
 
 const store = configureStore();
 
 const App = () => {
-  const [counter, setCounter] = React.useState(0);
+  const [authenticate, setAuthenticate] = React.useState(false);
+  const update = () => setAuthenticate(v => !v);
 
   return (
     <Provider store={store}>
@@ -20,14 +23,15 @@ const App = () => {
         <div className={baseClass}>
           {/* <div>here</div> */}
 
-          <button type="button" onClick={() => setCounter(c => c + 1)}>
-            click me {1}
-          </button>
+          <button onClick={update}>Login</button>
+          <Dialog visible={authenticate} onClose={update}>
+            <LoginForm />
+          </Dialog>
 
           <Link to="/details/1/">to details</Link>
 
           <Route path="/" exact component={HomePage} />
-          <Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />
+          {/*<Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />*/}
         </div>
       </BrowserRouter>
     </Provider>
