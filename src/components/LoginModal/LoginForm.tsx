@@ -18,7 +18,7 @@ interface State {
 
 interface LoginFormData {
     [key:string]: string;
-    userName: string;
+    username: string;
     password: string
 }
 
@@ -113,7 +113,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
                 submitState: true
             });
 
-            const data: LoginFormData = {userName: '', password: ''};
+            const data: LoginFormData = {username: '', password: ''};
             if (e.target instanceof HTMLFormElement) {
                 Array.from(e.target.elements).forEach(el => {
                     if (el instanceof HTMLInputElement && el.type !== 'submit') {
@@ -145,7 +145,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
                 <div className={getErrorState()}>{errorMsg}</div>
                 <div className="title center">Sign In</div>
                 <div className="rectangle center">
-                    <input type="text" name="userName" placeholder="User Name" required /><br />
+                    <input type="text" name="username" placeholder="User Name" required /><br />
                 </div>
                 <span className={fieldState(this.state.userName)}>A user name is required.</span>
                 <div className="rectangle center">

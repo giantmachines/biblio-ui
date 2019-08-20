@@ -14,7 +14,7 @@ storiesOf('Dialog', module)
       return (
           <Dialog visible={visible}>
               <LoginForm url={LOGIN_URL}
-                         onSuccess={() => {}} />
+                         onSuccess={() => {visible = false}} />
           </Dialog>
       );
   });
