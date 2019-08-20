@@ -19,7 +19,7 @@ interface State {
 interface LoginFormData {
     [key:string]: string;
     username: string;
-    password: string
+    password: string;
 }
 
 
