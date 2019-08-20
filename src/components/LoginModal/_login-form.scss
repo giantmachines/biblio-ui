@@ -46,15 +46,34 @@ $signin-padding: 15px;
     }
   }
 
-  .invalid-msg {
+  .msg {
     display: none;
-    color: red;
     text-align: left;
     width: 100%;
   }
 
-  .invalid-msg-on {
-    display: inline;
+  .msg-positive {
+    color: #7BA98F;
+  }
+
+  .msg-negative {
+    color: red;
+  }
+
+  .msg-on {
+    display: block;
+  }
+
+  .msg-fatal {
+    color: red;
+    text-align: left;
+    width: 95%;
+    background-color: lightgoldenrodyellow;
+    border: solid thin red;
+    padding: $signin-padding;
+    margin-bottom: $signin-margin;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

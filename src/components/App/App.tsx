@@ -16,6 +16,14 @@ const store = configureStore();
 const App = () => {
   const [authenticate, setAuthenticate] = React.useState(false);
   const update = () => setAuthenticate(v => !v);
+  const show = () => setAuthenticate(v => true);
+  const LOGIN_URL = 'https://library-platform-staging.herokuapp.com/login';
+  const onSuccess = () => {
+    update();
+  };
+  const onFailure = () => {
+    show();
+  };
 
   return (
     <Provider store={store}>
@@ -27,7 +35,9 @@ const App = () => {
           <button onClick={update}>Review</button>
 
           <Dialog visible={authenticate} onClose={update}>
-            <LoginForm />
+            <LoginForm url={LOGIN_URL}
+                       onSuccess={onSuccess}
+                       onFailure={onFailure} />
           </Dialog>
 
           <Link to="/details/1/">to details</Link>
