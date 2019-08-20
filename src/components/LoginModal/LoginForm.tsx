@@ -79,7 +79,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
         const node = ReactDOM.findDOMNode(this);
         const result:Map<string, boolean> = new Map();
         let errors = 0;
-        result.set('userName', this.state.username);
+        result.set('username', this.state.username);
         result.set('password', this.state.password);
 
         if (node instanceof HTMLElement){
