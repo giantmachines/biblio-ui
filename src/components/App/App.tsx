@@ -22,8 +22,10 @@ const App = () => {
       <BrowserRouter>
         <div className={baseClass}>
           {/* <div>here</div> */}
-
           <button onClick={update}>Login</button>
+          <button onClick={update}>Checkout</button>
+          <button onClick={update}>Review</button>
+
           <Dialog visible={authenticate} onClose={update}>
             <LoginForm />
           </Dialog>

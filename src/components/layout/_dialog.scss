@@ -2,6 +2,8 @@ $baseClass: loginModal;
 
 .#{$baseClass} {
   display: none;
+  position: fixed;
+  z-index: 999;
 
    .close {
      height: 20.62px;

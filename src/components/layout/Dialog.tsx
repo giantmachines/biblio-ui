@@ -17,7 +17,7 @@ interface State {
 class Dialog extends React.Component<Props, State> {
 
     static defaultProps = {
-        title: '&nbsp;',
+        title: '',
         onClose: () => {}
     };
 
