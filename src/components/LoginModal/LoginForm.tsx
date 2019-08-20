@@ -9,7 +9,7 @@ interface Props {
 }
 
 interface State {
-    userName: boolean,
+    username: boolean,
     password: boolean
     errorState: boolean;
     submitState: boolean;
@@ -33,7 +33,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
     constructor(props: Props){
        super(props);
        this.state = {
-           userName: true,
+           username: true,
            password: true,
            errorState: false,
            submitState: false,
@@ -79,7 +79,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
         const node = ReactDOM.findDOMNode(this);
         const result:Map<string, boolean> = new Map();
         let errors = 0;
-        result.set('userName', this.state.userName);
+        result.set('userName', this.state.username);
         result.set('password', this.state.password);
 
         if (node instanceof HTMLElement){
@@ -98,7 +98,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
 
         this.setState({
             password: result.get('password'),
-            userName: result.get('userName')
+            username: result.get('username')
         } as State);
 
         return errors === 0;
@@ -147,7 +147,7 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
                 <div className="rectangle center">
                     <input type="text" name="username" placeholder="User Name" required /><br />
                 </div>
-                <span className={fieldState(this.state.userName)}>A user name is required.</span>
+                <span className={fieldState(this.state.username)}>A user name is required.</span>
                 <div className="rectangle center">
                     <input type="text" name="password" placeholder="Password" required /><br />
                 </div>
