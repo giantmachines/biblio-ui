@@ -1,11 +1,14 @@
 $baseClass: login-form;
 
-$signin-margin: 15px;
-$signin-padding: 15px;
+$login-margin: 15px;
+$login-padding: 15px;
+$login-color: #7BA98F;
+$login-bgcolor: #FFF;
 
 .#{$baseClass} {
   display: inline-block;
-  padding: $signin-padding;
+  padding: $login-padding;
+  background-color: $login-bgcolor;
 
   .center {
     margin-left: auto;
@@ -16,7 +19,7 @@ $signin-padding: 15px;
   .title {
     height: 36px;
     width: 115px;
-    color: #7BA98F;
+    color: $login-color;
     font-family: "SF Pro Text";
     font-size: 30px;
     font-weight: bold;
@@ -25,16 +28,16 @@ $signin-padding: 15px;
 
   .rectangle {
     width: 388px;
-    margin: $signin-margin 0 $signin-margin 0;
+    margin: $login-margin 0 $login-margin 0;
 
     input[type=text]{
       height: 45px;
       width: 100%;
-      border: 1px solid #7BA98F;
+      border: 1px solid $login-color;
       border-radius: 30px;
-      background-color: #FFFFFF;
+      background-color: $login-bgcolor;
       box-shadow: 0 0 9px 0 rgba(0,0,0,0.18);
-      padding: $signin-padding;
+      padding: $login-padding;
     }
 
     input[type=submit]{
@@ -53,7 +56,7 @@ $signin-padding: 15px;
   }
 
   .msg-positive {
-    color: #7BA98F;
+    color: $login-color;
   }
 
   .msg-negative {
@@ -70,8 +73,8 @@ $signin-padding: 15px;
     width: 95%;
     background-color: lightgoldenrodyellow;
     border: solid thin red;
-    padding: $signin-padding;
-    margin-bottom: $signin-margin;
+    padding: $login-padding;
+    margin-bottom: $login-margin;
     margin-left: auto;
     margin-right: auto;
   }

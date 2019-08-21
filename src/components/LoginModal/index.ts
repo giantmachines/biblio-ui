@@ -1,4 +1,4 @@
-import Dialog from '../layout/Dialog';
 import LoginForm from "./LoginForm";
+import Overlay from "./Overlay";
 
-export {Dialog, LoginForm};
+export {Overlay, LoginForm};
