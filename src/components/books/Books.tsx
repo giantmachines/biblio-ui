@@ -1,13 +1,15 @@
 import {baseClass} from './_book-list.scss';
 import * as React from 'react';
 import * as uuid from 'uuid/v4';
-import {FetchAllBooks} from "../../redux/books";
+import {FetchAllBooks, FetchSelectedBook} from "../../redux/books";
 
 interface Props {
     filter?: string | null;
-    fetchAllBooks: FetchAllBooks;
     authenticated: boolean;
-    books: Array<BookDetails>
+    books: Array<BookDetails>;
+    fetchAllBooks: FetchAllBooks;
+    fetchSelectedBook: FetchSelectedBook;
+    history?: any;
 }
 
 
@@ -28,12 +30,28 @@ class Book extends React.Component<Props>{
 
 class BookList extends React.Component<Props> {
 
+    static defaultProps = {
+        authenticated: false
+    };
+
     constructor(props: Props) {
         super(props);
     }
 
     componentDidMount(): void {
         this.props.fetchAllBooks();
+    }
+
+    viewDetails(e:React.MouseEvent){
+        if (e.target instanceof HTMLElement) {
+            const id: string = e.target.getAttribute('data-bookid') || '';
+            const selectedId = parseInt(id);
+            if (selectedId < 0) {
+                return;
+            }
+            this.props.fetchSelectedBook(selectedId);
+            //this.props.history.push(`/books/{id}`);
+        }
     }
 
     render(){
@@ -44,7 +62,7 @@ class BookList extends React.Component<Props> {
         const items = books.map(book => {
             return (
                 <div key={uuid()} className="book">
-                    <div><img src={book.image} alt="Cover image" /></div>
+                    <div><img src={book.image} alt="Cover image" data-bookid={book.id} /></div>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
                     <div className={showStatus()}>{book.status}</div>
@@ -53,7 +71,7 @@ class BookList extends React.Component<Props> {
             );
         });
 
-        return (<div className={baseClass}>{items}</div>);
+        return (<div className={baseClass} onClick={this.viewDetails.bind(this)}>{items}</div>);
     }
 
 }

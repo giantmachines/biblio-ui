@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {BookList} from './Books';
 import {Store} from "../../configureStore";
-import {fetchAllBooks} from '../../redux/books';
+import {fetchAllBooks, fetchSelectedBook} from '../../redux/books';
 
 function mapStateToProps(state:Store){
     console.log("state:  ", state);
@@ -13,7 +13,7 @@ function mapStateToProps(state:Store){
 }
 
 const mapDispatchToProps = {
-    fetchAllBooks,
+    fetchAllBooks, fetchSelectedBook
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);

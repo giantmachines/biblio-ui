@@ -8,7 +8,7 @@ export interface MeState {
 }
 
 export interface BookState {
-  books: Array<any>;
-  memento: Array<any>;
+  books: Array<BookDetails>;
+  memento: Array<BookDetails>;
   loading: boolean;
 }
