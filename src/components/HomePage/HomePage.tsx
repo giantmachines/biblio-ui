@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { baseClass } from './_home-page.scss';
-import {BookList} from "../books/Books";
+import BookList from "../books/BooksContainer";
 import FilterBox from "../filtering/FilterBox";
 
 const HomePage = () => {
-  const URL = 'https://library-platform-staging.herokuapp.com/books';
   const [filter, setFilter] = React.useState(null);
   return (
       <div className={baseClass}>
@@ -15,7 +14,7 @@ const HomePage = () => {
           <FilterBox name="bookFilter" onChange={setFilter}/>
         </section>
         <section className="main">
-          <BookList url={URL} authenticated={true} filter={filter}/>
+          <BookList />
         </section>
       </div>
   );

@@ -17,6 +17,10 @@ $baseClass: booklist;
   .off {
     display: none;
   }
+
+  img {
+    max-width: 50%;
+  }
 }
 
 :export {
