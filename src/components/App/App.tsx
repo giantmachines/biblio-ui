@@ -34,7 +34,7 @@ const App = () => {
           <button onClick={update}>Checkout</button>
           <button onClick={update}>Review</button>
 
-          <Dialog visible={authenticate} onClose={update}>
+          <Dialog visible={authenticate} onClose={update} overlay={true}>
             <LoginForm url={LOGIN_URL}
                        onSuccess={onSuccess}
                        onFailure={onFailure} />

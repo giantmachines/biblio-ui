@@ -1,0 +1,21 @@
+$baseClass: overlay;
+
+.#{$baseClass} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 990;
+  display: none;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.overlay-on {
+  display: block;
+}
+
+:export {
+  baseClass: $baseClass
+}
