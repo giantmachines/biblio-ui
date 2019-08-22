@@ -1,4 +1,4 @@
 import Dialog from './Dialog';
-import { Header } from './sections';
+import { Header, Sidebar } from './sections';
 
-export { Dialog, Header };
+export { Dialog, Header, Sidebar };

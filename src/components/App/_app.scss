@@ -4,6 +4,9 @@ $baseClass: app;
   > .header {
     border: solid silver 1px;
     padding: 15px 50px 0 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
 
     .banner {
       height: 72px;
@@ -34,8 +37,21 @@ $baseClass: app;
         margin: 0 10px 0 10px;
       }
     }
+  }
 
+  .sidebar {
+    position: absolute;
+    top: 0;
+  }
 
+  .sidebar--left {
+    left: 0;
+    height: 100%;
+    border-right: solid #7BA98F 1px;
+  }
+
+  .sidebar--right {
+    right: 0;
   }
 }
 

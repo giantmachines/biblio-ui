@@ -7,7 +7,7 @@ import HomePage from '../HomePage';
 import configureStore from '../../configureStore';
 import Dialog from "../layout/Dialog";
 import LoginForm from "../LoginModal/LoginForm";
-import {Header} from "../layout";
+import {Header, Sidebar} from "../layout";
 // @ts-ignore
 import banner from "./Giant-Machines_Logo_BW.svg";
 // @ts-ignore
@@ -19,7 +19,7 @@ const store = configureStore();
 const App = () => {
   const [authenticate, setAuthenticate] = React.useState(false);
   const update = () => setAuthenticate(v => !v);
-  const show = () => setAuthenticate(v => true);
+  const show = () => setAuthenticate(() => true);
   const LOGIN_URL = 'https://library-platform-staging.herokuapp.com/login';
   const onSuccess = () => {
     update();
@@ -42,13 +42,13 @@ const App = () => {
             </span>
           </Header>
 
+          <Sidebar align="left">Hello1</Sidebar>
+
           <Dialog visible={authenticate} onClose={update} overlay={true}>
             <LoginForm url={LOGIN_URL}
                        onSuccess={onSuccess}
                        onFailure={onFailure} />
           </Dialog>
-
-          {/*<Link to="/details/1/">to details</Link>*/}
 
           <Route path="/" exact component={HomePage} />
           {/*<Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />*/}

@@ -58,6 +58,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-hot-loader": "4.12.0",
+    "react-inlinesvg": "1.1.6",
     "react-redux": "7.1.0",
     "react-router": "5.0.0",
     "react-router-dom": "5.0.0",
@@ -69,14 +70,13 @@
     "style-loader": "0.23.1",
     "typesafe-actions": "4.4.2",
     "typescript": "3.5.1",
-    "uuid": "^3.3.3",
+    "uuid": "3.3.3",
     "webpack": "4.32.2",
     "webpack-cli": "3.3.2",
     "webpack-dev-server": "3.4.1"
   },
   "devDependencies": {
     "@types/uuid": "^3.4.5",
-    "react-inlinesvg": "^1.1.6",
     "svg-inline-loader": "^0.8.0"
   }
 }
