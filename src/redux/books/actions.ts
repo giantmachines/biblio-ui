@@ -15,6 +15,7 @@ export const fetchSelectedBookSuccess = (data:any) => {
   return {type: 'FETCH_SELECTED_BOOK_SUCCESS', payload: [data]};
 };
 
+
 export type FetchAllBooks = typeof fetchAllBooks;
 export type FetchSelectedBook = typeof fetchSelectedBook;
 

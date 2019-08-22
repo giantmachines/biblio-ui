@@ -1,5 +1,6 @@
 import * as React from "react";
 import {baseClass} from './_rating.scss';
+import uuid from "uuid";
 
 interface Props {
     value: number;
@@ -11,7 +12,7 @@ export default function ratingComponent(props: Props){
         return n <= value ? 'checked' : 'unchecked';
     };
     const stars = [1,2,3,4,5].map(n => {
-        return (<span className={getClass(n)}>★</span>);
+        return (<span key={uuid()} className={getClass(n)}>★</span>);
     });
 
     return (

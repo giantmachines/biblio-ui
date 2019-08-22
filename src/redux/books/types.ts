@@ -11,4 +11,5 @@ export interface BookState {
   books: Array<BookDetails>;
   memento: Array<BookDetails>;
   loading: boolean;
+  filter: Function | null
 }

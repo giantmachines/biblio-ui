@@ -6,12 +6,12 @@ import Rating from "./Rating";
 
 
 interface Props {
-    filter?: string | null;
+    filter?: any;
     authenticated: boolean;
     books: Array<BookDetails>;
     fetchAllBooks: FetchAllBooks;
     fetchSelectedBook: FetchSelectedBook;
-    history?: any;
+    onBookSelected: any;
 }
 
 
@@ -32,7 +32,8 @@ class Book extends React.Component<Props>{
 class BookList extends React.Component<Props> {
 
     static defaultProps = {
-        authenticated: false
+        authenticated: false,
+        onBookSelected: (e:number) => {}
     };
 
     constructor(props: Props) {
@@ -43,7 +44,7 @@ class BookList extends React.Component<Props> {
         this.props.fetchAllBooks();
     }
 
-    async viewDetails(e:React.MouseEvent){
+    async next(e: React.MouseEvent) {
         if (e.target instanceof HTMLElement) {
             const id: string = e.target.getAttribute('data-bookid') || '';
             const selectedId = parseInt(id);
@@ -51,16 +52,18 @@ class BookList extends React.Component<Props> {
                 return;
             }
             await this.props.fetchSelectedBook(selectedId);
-            this.props.history.push(`/books/{id}`);
+            this.props.onBookSelected(selectedId);
         }
     }
 
     render(){
-        const { books, authenticated } = this.props;
+        const { books, authenticated, filter } = this.props;
         const showStatus = () => {
             return authenticated ? 'on' : 'off'
         };
-        const items = books.map(book => {
+
+        const data = filter != null ? filter(books) : books;
+        const items = data.map((book:BookDetails) => {
             return (
                 <div key={uuid()} className="book">
                     <div><img src={book.image} data-bookid={book.id} /></div>
@@ -72,7 +75,7 @@ class BookList extends React.Component<Props> {
             );
         });
 
-        return (<div className={baseClass} onClick={this.viewDetails.bind(this)}>{items}</div>);
+        return (<div className={baseClass} onClick={this.next.bind(this)}>{items}</div>);
     }
 
 }
