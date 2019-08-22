@@ -1,6 +1,22 @@
-$baseClass: app;
+$baseClass: home;
+$home-padding: 0 10px 0 10px;
 
 .#{$baseClass} {
+  .header {
+    border-bottom: solid silver 1px;
+    padding: $home-padding;
+    display: table;
+    width: 100%;
+
+    div {
+      display: table-cell;
+    }
+  }
+
+  .main {
+    padding: $home-padding;
+    margin-top: 10px;
+  }
 }
 
 :export {

@@ -1,0 +1,10 @@
+$baseClass: filter-box;
+
+.#{$baseClass} {
+  float: right;
+  margin: 0 25px 0 25px;
+}
+
+:export {
+  baseClass: $baseClass
+}

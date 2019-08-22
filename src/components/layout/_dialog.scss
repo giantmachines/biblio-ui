@@ -1,14 +1,20 @@
 $baseClass: loginModal;
+$baseColor: #7BA98F;
 
 .#{$baseClass} {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
+  left: 40%;
+  top: 40%;
+  border: solid $baseColor 2px;
+  background-color: #FFF;
+  opacity: 1;
 
    .close {
      height: 20.62px;
      width: 20.62px;
-     color: #7BA98F;
+     color: $baseColor;
      cursor: pointer;
      font-family: "Arial Unicode MS";
    }
@@ -21,6 +27,7 @@ $baseClass: loginModal;
 .on {
   display: inline-block;
 }
+
 
 :export {
   baseClass: $baseClass
