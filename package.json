@@ -69,8 +69,12 @@
     "style-loader": "0.23.1",
     "typesafe-actions": "4.4.2",
     "typescript": "3.5.1",
+    "uuid": "^3.3.3",
     "webpack": "4.32.2",
     "webpack-cli": "3.3.2",
     "webpack-dev-server": "3.4.1"
+  },
+  "devDependencies": {
+    "@types/uuid": "^3.4.5"
   }
 }

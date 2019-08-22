@@ -1,0 +1,86 @@
+$baseClass: login-form;
+
+$login-margin: 15px;
+$login-padding: 15px;
+$login-color: #7BA98F;
+$login-bgcolor: #FFF;
+
+.#{$baseClass} {
+  display: inline-block;
+  padding: $login-padding;
+  background-color: $login-bgcolor;
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .title {
+    height: 36px;
+    width: 115px;
+    color: $login-color;
+    font-family: "SF Pro Text";
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: -0.4px;
+  }
+
+  .rectangle {
+    width: 388px;
+    margin: $login-margin 0 $login-margin 0;
+
+    input[type=text]{
+      height: 45px;
+      width: 100%;
+      border: 1px solid $login-color;
+      border-radius: 30px;
+      background-color: $login-bgcolor;
+      box-shadow: 0 0 9px 0 rgba(0,0,0,0.18);
+      padding: $login-padding;
+    }
+
+    input[type=submit]{
+      height: 48px;
+      width: 60%;
+      border-radius: 24px;
+      background: linear-gradient(48.12deg, #7BA98F 0%, #76AB65 100%);
+      box-shadow: 0 0 9px 0 rgba(0,0,0,0.18);
+    }
+  }
+
+  .msg {
+    display: none;
+    text-align: left;
+    width: 100%;
+  }
+
+  .msg-positive {
+    color: $login-color;
+  }
+
+  .msg-negative {
+    color: red;
+  }
+
+  .msg-on {
+    display: block;
+  }
+
+  .msg-fatal {
+    color: red;
+    text-align: left;
+    width: 95%;
+    background-color: lightgoldenrodyellow;
+    border: solid thin red;
+    padding: $login-padding;
+    margin-bottom: $login-margin;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+:export {
+  baseClass: $baseClass
+}

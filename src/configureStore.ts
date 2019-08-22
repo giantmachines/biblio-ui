@@ -1,9 +1,14 @@
 import { applyMiddleware, compose, createStore, StoreEnhancer } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import {BookState} from "./redux/books";
+import rootReducer from './redux';
+import rootSaga from "./redux/sagas";
 
 const isProduction = process.env.NODE_ENV === 'production';
+const sagaMiddleware = createSagaMiddleware();
 
 export default (state?: any) => {
-  const middleware = applyMiddleware();
+  const middleware = applyMiddleware(sagaMiddleware);
 
   // Middleware enhancers
   const enhancers: StoreEnhancer[] = [];
@@ -26,7 +31,16 @@ export default (state?: any) => {
     ...enhancers,
   );
 
-  const store = createStore(() => ({}), state, middlewareStack);
+
+  const store = createStore(rootReducer, state, middlewareStack);
+  sagaMiddleware.run(rootSaga);
 
   return store;
 };
+
+
+
+export interface Store {
+  me: any;
+  books: BookState;
+}

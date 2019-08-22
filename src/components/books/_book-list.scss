@@ -1,0 +1,29 @@
+$baseClass: booklist;
+
+.#{$baseClass} {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+
+  .book {
+    flex: 0 0 20%;
+    margin-bottom: 5%;
+  }
+
+  .on {
+    display: block;
+  }
+
+  .off {
+    display: none;
+  }
+
+  img {
+    max-width: 50%;
+    cursor: pointer;
+  }
+}
+
+:export {
+  baseClass: $baseClass
+}
