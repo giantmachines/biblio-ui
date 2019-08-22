@@ -45,7 +45,7 @@ class BookList extends React.Component<Props> {
     }
 
     async next(e: React.MouseEvent) {
-        if (e.target instanceof HTMLElement) {
+        if (e.target instanceof HTMLImageElement) {
             const id: string = e.target.getAttribute('data-bookid') || '';
             const selectedId = parseInt(id);
             if (selectedId < 0) {

@@ -16,6 +16,6 @@ export default function ratingComponent(props: Props){
     });
 
     return (
-        <div className={baseClass}>{stars}</div>
+        <div className={baseClass}>{stars} <span>{value || 'Not rated'}</span></div>
     );
 }

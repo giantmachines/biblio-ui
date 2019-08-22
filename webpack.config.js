@@ -55,6 +55,14 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, 'src'),
+        resolve: {
+          extensions: ['.svg'],
+        },
+        loader: 'svg-inline-loader'
+      }
     ],
   },
   plugins: [

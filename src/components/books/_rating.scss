@@ -7,6 +7,12 @@ $baseClass: rating;
   .unchecked {
     color: darkgray;
   }
+
+  span {
+    color: silver;
+    font-family: "Helvetica Neue", "Lucida Grande", serif;
+    font-size: small;
+  }
 }
 
 
