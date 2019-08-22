@@ -29,7 +29,6 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <div className={baseClass}>
-          {/* <div>here</div> */}
           <button onClick={update}>Login</button>
           <button onClick={update}>Checkout</button>
           <button onClick={update}>Review</button>

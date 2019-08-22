@@ -2,6 +2,8 @@ import {baseClass} from './_book-list.scss';
 import * as React from 'react';
 import * as uuid from 'uuid/v4';
 import {FetchAllBooks, FetchSelectedBook} from "../../redux/books";
+import Rating from "./Rating";
+
 
 interface Props {
     filter?: string | null;
@@ -11,7 +13,6 @@ interface Props {
     fetchSelectedBook: FetchSelectedBook;
     history?: any;
 }
-
 
 
 class Book extends React.Component<Props>{
@@ -42,15 +43,15 @@ class BookList extends React.Component<Props> {
         this.props.fetchAllBooks();
     }
 
-    viewDetails(e:React.MouseEvent){
+    async viewDetails(e:React.MouseEvent){
         if (e.target instanceof HTMLElement) {
             const id: string = e.target.getAttribute('data-bookid') || '';
             const selectedId = parseInt(id);
             if (selectedId < 0) {
                 return;
             }
-            this.props.fetchSelectedBook(selectedId);
-            //this.props.history.push(`/books/{id}`);
+            await this.props.fetchSelectedBook(selectedId);
+            this.props.history.push(`/books/{id}`);
         }
     }
 
@@ -62,11 +63,11 @@ class BookList extends React.Component<Props> {
         const items = books.map(book => {
             return (
                 <div key={uuid()} className="book">
-                    <div><img src={book.image} alt="Cover image" data-bookid={book.id} /></div>
+                    <div><img src={book.image} data-bookid={book.id} /></div>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
                     <div className={showStatus()}>{book.status}</div>
-                    <div>{book.rating}</div>
+                    <div><Rating value={book.rating} /></div>
                 </div>
             );
         });

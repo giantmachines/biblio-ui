@@ -4,7 +4,6 @@ import {Store} from "../../configureStore";
 import {fetchAllBooks, fetchSelectedBook} from '../../redux/books';
 
 function mapStateToProps(state:Store){
-    console.log("state:  ", state);
     return {
         books: state.books.books,
         memento: state.books.memento,
