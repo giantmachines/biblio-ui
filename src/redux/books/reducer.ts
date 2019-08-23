@@ -1,11 +1,11 @@
-//import { Action } from 'redux';
 
 import {BookState} from './types';
 
 const initialState: BookState = {
   books: [],
   memento: [],
-  loading: false
+  loading: false,
+  filter: null
 };
 
 
@@ -13,6 +13,7 @@ interface Action {
   type: string;
   payload?: any;
   selectedId?:number;
+  filter?:Function | null;
 }
 
 

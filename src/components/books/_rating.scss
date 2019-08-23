@@ -1,0 +1,15 @@
+$baseClass: rating;
+
+.#{$baseClass} {
+  .checked {
+    color: gold;
+  }
+  .unchecked {
+    color: darkgray;
+  }
+}
+
+
+:export {
+  baseClass: $baseClass
+}
