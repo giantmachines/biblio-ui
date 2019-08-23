@@ -7,5 +7,6 @@ export const contains = (value:any, chars:string) => {
 };
 
 export const byAuthorOrTitle = (item:BookDetails, chars:string) => {
-    return item.author.startsWith(chars) || item.title.startsWith(chars);
+    chars = chars.toLowerCase();
+    return item.author.toLowerCase().startsWith(chars) || item.title.toLowerCase().startsWith(chars);
 };

@@ -25,6 +25,8 @@ import settings from "./images/settings_normal.svg"
 // @ts-ignore
 import settings_checked from "./images/settings_checked.svg"
 import SVG from 'react-inlinesvg';
+import DetailsPage from "../DetailsPage";
+
 
 const store = configureStore();
 
@@ -38,6 +40,10 @@ const App = () => {
   };
   const onFailure = () => {
     show();
+  };
+  const isActive = (match:any, location:any) => {
+    console.log(location)
+    return location.pathname === '/' || location.pathname.startsWith('/books/');
   };
 
   return (
@@ -54,7 +60,9 @@ const App = () => {
             </span>
           </Header>
 
-          <Dialog visible={authenticate} onClose={update} overlay={true}>
+          <Dialog visible={authenticate}
+                  onClose={update}
+                  overlay={true}>
             <LoginForm url={LOGIN_URL}
                        onSuccess={onSuccess}
                        onFailure={onFailure} />
@@ -62,23 +70,30 @@ const App = () => {
 
           <section className="main">
             <Sidebar>
-                <NavLink to="/" exact className="row" activeClassName="row row--selected">
+                <NavLink to="/"
+                         isActive={isActive}
+                         className="row"
+                         activeClassName="row row--selected">
                   <SVG src={home} className="inactive"/>
                   <SVG src={home_checked} className="active"/>
                 </NavLink>
-                <NavLink to="/dashboard" className="row" activeClassName="row row--selected">
+                <NavLink to="/dashboard"
+                         className="row"
+                         activeClassName="row row--selected">
                   <SVG src={dashboard} className="inactive" />
                   <SVG src={dashboard_checked} className="active" />
                 </NavLink>
-                <NavLink to="/settings" className="row" activeClassName="row row--selected">
+                <NavLink to="/settings"
+                         className="row"
+                         activeClassName="row row--selected">
                   <SVG src={settings} className="inactive" />
                   <SVG src={settings_checked} className="active" />
                 </NavLink>
             </Sidebar>
 
             <Route path="/" exact component={HomePage} />
+            <Route path="/books/:id" exact render={() => <DetailsPage />} />
           </section>
-          {/*<Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />*/}
         </div>
       </BrowserRouter>
     </Provider>

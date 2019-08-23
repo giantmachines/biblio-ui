@@ -6,6 +6,12 @@ import Rating from "./Rating";
 
 
 interface Props {
+    data: BookDetails;
+    authenticated: boolean;
+}
+
+
+interface ListProps {
     filter?: any;
     authenticated: boolean;
     books: Array<BookDetails>;
@@ -15,28 +21,76 @@ interface Props {
 }
 
 
+interface ReviewProps {
+    rating: number;
+    content: string;
+    username: string;
+    dateReviewed: Date;
+}
+
+
+
+
+class Review extends React.Component<ReviewProps>{
+    constructor(props:ReviewProps){
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>A review will be here.</div>
+        );
+    }
+}
+
+
+
 class Book extends React.Component<Props>{
+    static defaultProps = {
+        authenticated: false,
+        data: {}
+    };
 
     constructor(props: Props) {
         super(props);
     }
 
+    getReviews(reviews:Array<any>){
+        return reviews.map(review => {
+            return new Review(review);
+        });
+    }
+
     render(){
-        return (<div>Hello</div>);
+        const {data} = this.props;
+        return (
+            <section className="details">
+                <section className="details__section--top">
+                    <div>{data.image}</div>
+                    <div>{data.image}</div>
+                </section>
+                <section className="details__section--center">
+                    <div>Form goes here</div>
+                </section>
+                <section className="details__section--bottom">
+                    {this.getReviews(data.reviews)}
+                </section>
+            </section>
+        );
     }
 
 }
 
 
 
-class BookList extends React.Component<Props> {
+class BookList extends React.Component<ListProps> {
 
     static defaultProps = {
         authenticated: false,
         onBookSelected: (e:number) => {}
     };
 
-    constructor(props: Props) {
+    constructor(props: ListProps) {
         super(props);
     }
 

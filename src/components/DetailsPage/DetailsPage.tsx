@@ -1,14 +1,17 @@
 import * as React from 'react';
 
 import { baseClass } from './_details-page.scss';
+import {Book} from "../books/Books";
 
 interface Props {
-  counter: number;
 }
 
 const DetailsPage = (props: Props) => {
-  const { counter } = props;
-  return <div className={baseClass}>Details Page {counter}</div>;
+  return (
+      <div className={baseClass}>
+        <Book />
+      </div>
+  );
 };
 
 export default DetailsPage;
