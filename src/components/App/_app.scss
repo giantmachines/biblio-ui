@@ -42,31 +42,30 @@ $baseClass: app;
 }
 
 .sidebar {
-  display: table;
+  // Flex properties
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  // Positioning
   position: absolute;
   top: 95px;
   bottom: 0;
   height: 200%;
-  padding: 100px 0 100px 0;
   width: 200px;
   background-color: $site-baseColor;
   border: none;
-
-  .col {
-    height: 400px;
-    width: 100%;
-    display: table;
-    text-align: center;
-  }
+  padding-top: 100px;
 
   .row {
-    width: 200px;
-    display: table-row;
+    margin-top: 50px;
+    text-align: center;
+    padding: 25px 0 25px 0;
 
     svg {
       width: 70px;
       height: 70px;
-      margin-top: 50px;
     }
   }
 
