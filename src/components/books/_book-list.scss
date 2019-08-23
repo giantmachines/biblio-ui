@@ -3,18 +3,19 @@ $baseClass: booklist;
 .#{$baseClass} {
   display: flex;
   flex-flow: row wrap;
-  align-content: space-around;
+  align-items: flex-start;
+
 
   .book {
     flex: 0 0 20%;
     margin-bottom: 5%;
   }
 
-  .on {
+  .book__div--on {
     display: block;
   }
 
-  .off {
+  .book__div--off {
     display: none;
   }
 

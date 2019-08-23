@@ -2,18 +2,18 @@ import * as React from 'react';
 
 interface Props {
     children?:any;
-    align?: string;
+    className?: string;
 }
 
 export const Header = (props: Props) => {
     return (
-        <section className="header">{props.children}</section>
+        <section className={props.className || 'header'}>{props.children}</section>
     )
 };
 
 export const Sidebar = (props: Props) => {
     return (
-        <section className={`sidebar sidebar--${props.align}`}>
+        <section className={props.className || `sidebar`}>
             {props.children}
         </section>
     );
