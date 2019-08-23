@@ -1,10 +1,10 @@
 $baseClass: rating;
 
 .#{$baseClass} {
-  .checked {
+  .rating__span--checked {
     color: gold;
   }
-  .unchecked {
+  .rating__span--unchecked {
     color: darkgray;
   }
 

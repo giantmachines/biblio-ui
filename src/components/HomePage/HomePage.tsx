@@ -17,13 +17,13 @@ const HomePage = (props: Props) => {
 
     return (
         <section className={baseClass}>
-            <section className="booklist__header">
+            <section className="booklist__section--header">
                 <div>
                     <h2>Book List</h2>
                 </div>
                 <FilterBox name="bookFilter" onChange={setFilter} type={byAuthorOrTitle} />
             </section>
-            <section className="booklist__main">
+            <section className="booklist__section--main">
                 <BookList onBookSelected={toDetails} filter={filter} />
             </section>
         </section>

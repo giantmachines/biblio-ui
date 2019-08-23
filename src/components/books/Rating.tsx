@@ -9,7 +9,7 @@ interface Props {
 export default function ratingComponent(props: Props){
     const {value} = props;
     const getClass = (n:number) => {
-        return n <= value ? 'checked' : 'unchecked';
+        return n <= value ? `${baseClass}__span--checked` : `${baseClass}__span--unchecked`;
     };
     const stars = [1,2,3,4,5].map(n => {
         return (<span key={uuid()} className={getClass(n)}>★</span>);

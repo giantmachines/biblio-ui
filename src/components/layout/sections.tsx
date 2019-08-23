@@ -2,7 +2,6 @@ import * as React from 'react';
 
 interface Props {
     children?:any;
-    align?: string;
     className?: string;
 }
 
@@ -14,7 +13,7 @@ export const Header = (props: Props) => {
 
 export const Sidebar = (props: Props) => {
     return (
-        <section className={`sidebar sidebar--${props.align}`}>
+        <section className={props.className || `sidebar`}>
             {props.children}
         </section>
     );
