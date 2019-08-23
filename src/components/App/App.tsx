@@ -56,7 +56,6 @@ const App = () => {
           </Dialog>
 
           <Sidebar align="left">
-            <div className="col">
               <NavLink to="/" exact className="row" activeClassName="row row--selected">
                 <SVG src={home}/>
               </NavLink>
@@ -66,7 +65,6 @@ const App = () => {
               <NavLink to="/settings" className="row" activeClassName="row row--selected">
                 <SVG src={settings}/>
               </NavLink>
-            </div>
           </Sidebar>
 
           <Route path="/" exact component={HomePage} />
