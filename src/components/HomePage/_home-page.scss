@@ -1,22 +1,32 @@
 $baseClass: home;
-$home-padding: 0 10px 0 10px;
+$home-padding: 0 20px 0 20px;
+
 
 .#{$baseClass} {
-  .header {
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  padding: $home-padding;
+
+  .booklist__section--header {
     border-bottom: solid silver 1px;
     padding: $home-padding;
-    display: table;
-    width: 100%;
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
 
-    div {
-      display: table-cell;
+    div:nth-child(2) {
+      margin-left: auto;
     }
   }
 
-  .main {
+  .booklist__section--main {
     padding: $home-padding;
     margin-top: 10px;
+    height: 100%;
   }
+
 }
 
 :export {

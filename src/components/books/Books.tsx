@@ -59,7 +59,7 @@ class BookList extends React.Component<Props> {
     render(){
         const { books, authenticated, filter } = this.props;
         const showStatus = () => {
-            return authenticated ? 'on' : 'off'
+            return authenticated ? 'book__div--on' : 'book__div--off'
         };
 
         const data = filter != null ? filter(books) : books;

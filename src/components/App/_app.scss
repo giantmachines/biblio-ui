@@ -1,42 +1,107 @@
-$baseClass: app;
+$baseClass: wrapper;
+
+@import '../../styles/variables/colors';
+@import '../../styles/variables/fonts';
+
+$local_padding: 10px 10px 10px 10px;
+
 
 .#{$baseClass} {
-  > .header {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .header {
     border: solid silver 1px;
-    padding: 15px 50px 0 15px;
+    width: 100%;
+    display: flex;
+    justify-items: flex-start;
 
     .banner {
+      padding: $local_padding;
       height: 72px;
       width: 213px;
     }
 
-    > .header-right {
-      position: absolute;
-      right: 100px;
-      top: 20px;
-    }
+    .user-container {
+      padding: $local_padding;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
 
-    > span {
-      cursor: pointer;
-      color: silver;
-
-      > .headshot {
+      svg{
+        cursor: pointer;
+        color: silver;
         height: 55px;
         width: 55px;
         background-color: #FFFFFF;
       }
 
-      > .login {
-        position: absolute;
-        font-family: "Helvetica Neue", "Lucida Grande", serif;
+      span {
+        cursor: pointer;
+        color: silver;
+        font-family: $site-label-font;
         font-size: small;
-        top: 40%;
         margin: 0 10px 0 10px;
       }
     }
-
-
   }
+
+  .main {
+    display: flex;
+    height: 100%;
+    min-width: 100%;
+    align-items: stretch;
+
+    .sidebar {
+      flex-basis: 10%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      background-color: $site-baseColor;
+      border: none;
+      padding-top: 100px;
+
+      .row {
+        margin-top: 50px;
+        text-align: center;
+        padding: 25px 0 25px 0;
+
+        svg {
+          width: 70px;
+          height: 70px;
+        }
+
+        svg.inactive {
+          display: inline;
+        }
+
+        svg.active {
+          display: none;
+        }
+      }
+
+      .row--selected {
+        background-color: #FFFFFF;
+
+        svg.inactive {
+          display: none;
+        }
+
+        svg.active {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+
+div#main {
+  height: 100%;
 }
 
 :export {
