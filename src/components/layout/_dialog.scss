@@ -1,5 +1,7 @@
 $baseClass: loginModal;
-$baseColor: #7BA98F;
+
+@import '../../styles/variables/colors';
+@import '../../styles/variables/fonts';
 
 .#{$baseClass} {
   display: none;
@@ -7,14 +9,14 @@ $baseColor: #7BA98F;
   z-index: 9999;
   left: 40%;
   top: 40%;
-  border: solid $baseColor 2px;
+  border: solid $site-baseColor 2px;
   background-color: #FFF;
   opacity: 1;
 
    .close {
      height: 20.62px;
      width: 20.62px;
-     color: $baseColor;
+     color: $site-baseColor;
      cursor: pointer;
      font-family: "Arial Unicode MS";
    }

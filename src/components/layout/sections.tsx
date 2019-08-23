@@ -13,7 +13,7 @@ export const Header = (props: Props) => {
 
 export const Sidebar = (props: Props) => {
     return (
-        <section className={`sidebar--${props.align}`}>
+        <section className={`sidebar sidebar--${props.align}`}>
             {props.children}
         </section>
     );

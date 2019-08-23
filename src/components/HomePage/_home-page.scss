@@ -1,12 +1,15 @@
 $baseClass: home;
 $home-padding: 0 10px 0 10px;
 
+
 .#{$baseClass} {
   .header {
     border-bottom: solid silver 1px;
     padding: $home-padding;
     display: table;
-    width: 100%;
+    width: 80%;
+    position: relative;
+    left: 250px;
 
     div {
       display: table-cell;
@@ -17,6 +20,7 @@ $home-padding: 0 10px 0 10px;
     padding: $home-padding;
     margin-top: 10px;
   }
+
 }
 
 :export {

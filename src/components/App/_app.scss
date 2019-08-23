@@ -1,12 +1,13 @@
 $baseClass: app;
 
+@import '../../styles/variables/colors';
+@import '../../styles/variables/fonts';
+
 .#{$baseClass} {
-  > .header {
-    border: solid silver 1px;
-    padding: 15px 50px 0 15px;
-    position: absolute;
-    left: 0;
-    top: 0;
+   > .header {
+     border: solid silver 1px;
+     padding: 15px 50px 0 15px;
+     width: 100%;
 
     .banner {
       height: 72px;
@@ -31,28 +32,55 @@ $baseClass: app;
 
       > .login {
         position: absolute;
-        font-family: "Helvetica Neue", "Lucida Grande", serif;
+        font-family: $site-label-font;
         font-size: small;
         top: 40%;
         margin: 0 10px 0 10px;
       }
     }
   }
+}
 
-  .sidebar {
-    position: absolute;
-    top: 0;
+.sidebar {
+  display: table;
+  position: absolute;
+  top: 95px;
+  bottom: 0;
+  height: 200%;
+  padding: 100px 0 100px 0;
+  width: 200px;
+  background-color: $site-baseColor;
+  border: none;
+
+  .col {
+    height: 400px;
+    width: 100%;
+    display: table;
+    text-align: center;
   }
 
-  .sidebar--left {
-    left: 0;
-    height: 100%;
-    border-right: solid #7BA98F 1px;
+  .row {
+    width: 200px;
+    display: table-row;
+
+    svg {
+      width: 70px;
+      height: 70px;
+      margin-top: 50px;
+    }
   }
 
-  .sidebar--right {
-    right: 0;
+  .row--selected {
+    background-color: #FFFFFF;
   }
+}
+
+.sidebar--left {
+  left: 0;
+}
+
+.sidebar--right {
+  right: 0;
 }
 
 :export {

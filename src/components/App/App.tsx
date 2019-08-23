@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, BrowserRouter, Link } from 'react-router-dom';
+import {Route, BrowserRouter, Link, NavLink} from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import { baseClass } from './_app.scss';
@@ -12,6 +12,12 @@ import {Header, Sidebar} from "../layout";
 import banner from "./Giant-Machines_Logo_BW.svg";
 // @ts-ignore
 import headshot from "./headshot.svg"
+// @ts-ignore
+import home from "../layout/homepage_normal.svg"
+// @ts-ignore
+import dashboard from "../layout/dashboard_normal.svg"
+// @ts-ignore
+import settings from "../layout/settings_normal.svg"
 import SVG from 'react-inlinesvg';
 
 const store = configureStore();
@@ -42,13 +48,26 @@ const App = () => {
             </span>
           </Header>
 
-          <Sidebar align="left">Hello1</Sidebar>
 
           <Dialog visible={authenticate} onClose={update} overlay={true}>
             <LoginForm url={LOGIN_URL}
                        onSuccess={onSuccess}
                        onFailure={onFailure} />
           </Dialog>
+
+          <Sidebar align="left">
+            <div className="col">
+              <NavLink to="/" exact className="row" activeClassName="row row--selected">
+                <SVG src={home}/>
+              </NavLink>
+              <NavLink to="/dashboard" className="row" activeClassName="row row--selected">
+                <SVG src={dashboard}/>
+              </NavLink>
+              <NavLink to="/settings" className="row" activeClassName="row row--selected">
+                <SVG src={settings}/>
+              </NavLink>
+            </div>
+          </Sidebar>
 
           <Route path="/" exact component={HomePage} />
           {/*<Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />*/}
