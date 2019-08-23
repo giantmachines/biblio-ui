@@ -43,8 +43,8 @@ const App = () => {
               <SVG src={banner} className="banner" />
             </Link>
             <span className="user__container" onClick={update}>
-              <SVG src={headshot} className="headshot" />
-              <span className="login">Login</span>
+              <SVG src={headshot} />
+              <span>Login</span>
             </span>
           </Header>
 
@@ -54,7 +54,7 @@ const App = () => {
                        onFailure={onFailure} />
           </Dialog>
 
-          <section className="main">
+          <section className="layout__main">
             <Sidebar align="left">
                 <NavLink to="/" exact className="row" activeClassName="row row--selected">
                   <SVG src={home}/>

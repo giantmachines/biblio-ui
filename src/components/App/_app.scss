@@ -7,11 +7,6 @@ $baseClass: app;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
-   > section.main {
-     display: flex;
-     flex-direction: row;
-   }
 }
 
 .layout__header {
@@ -20,60 +15,55 @@ $baseClass: app;
   width: 100%;
   display: flex;
   justify-items: flex-start;
+
+
+  .banner {
+    padding: 10px 10px 10px 10px;
+    height: 72px;
+    width: 213px;
+  }
+
+  .user__container {
+    padding: 10px 10px 10px 10px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    svg{
+      cursor: pointer;
+      color: silver;
+      height: 55px;
+      width: 55px;
+      background-color: #FFFFFF;
+    }
+
+    span {
+      cursor: pointer;
+      color: silver;
+      font-family: $site-label-font;
+      font-size: small;
+      margin: 0 10px 0 10px;
+    }
+  }
 }
 
 
-.banner {
-  padding: 10px 10px 10px 10px;
-  height: 72px;
-  width: 213px;
-}
-
-.header-right {
-  //position: absolute;
-  //right: 100px;
-  //top: 20px;
-}
-
-
-.user__container {
-  padding: 10px 10px 10px 10px;
-  margin-left: auto;
+.layout__main {
   display: flex;
-  align-items: center;
-
-
-  .headshot {
-    cursor: pointer;
-    color: silver;
-    height: 55px;
-    width: 55px;
-    background-color: #FFFFFF;
-  }
-
-
-  .login {
-    cursor: pointer;
-    color: silver;
-    font-family: $site-label-font;
-    font-size: small;
-    margin: 0 10px 0 10px;
-  }
 }
+
+
 
 .sidebar {
-  // Flex properties
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
-  // Positioning
-  position: absolute;
+  position: static;
   top: 95px;
   bottom: 0;
-  //height: 200%;
-  width: 200px;
+  width: 500px;
   background-color: $site-baseColor;
   border: none;
   padding-top: 100px;
