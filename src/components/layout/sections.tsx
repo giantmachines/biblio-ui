@@ -3,11 +3,12 @@ import * as React from 'react';
 interface Props {
     children?:any;
     align?: string;
+    className?: string;
 }
 
 export const Header = (props: Props) => {
     return (
-        <section className="header">{props.children}</section>
+        <section className={props.className || 'header'}>{props.children}</section>
     )
 };
 

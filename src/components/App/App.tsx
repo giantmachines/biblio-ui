@@ -38,16 +38,15 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <div className={baseClass}>
-          <Header>
+          <Header className="layout__header">
             <Link to="/">
               <SVG src={banner} className="banner" />
             </Link>
-            <span className="header-right" onClick={update}>
+            <span className="user__container" onClick={update}>
               <SVG src={headshot} className="headshot" />
               <span className="login">Login</span>
             </span>
           </Header>
-
 
           <Dialog visible={authenticate} onClose={update} overlay={true}>
             <LoginForm url={LOGIN_URL}
@@ -55,19 +54,21 @@ const App = () => {
                        onFailure={onFailure} />
           </Dialog>
 
-          <Sidebar align="left">
-              <NavLink to="/" exact className="row" activeClassName="row row--selected">
-                <SVG src={home}/>
-              </NavLink>
-              <NavLink to="/dashboard" className="row" activeClassName="row row--selected">
-                <SVG src={dashboard}/>
-              </NavLink>
-              <NavLink to="/settings" className="row" activeClassName="row row--selected">
-                <SVG src={settings}/>
-              </NavLink>
-          </Sidebar>
+          <section className="main">
+            <Sidebar align="left">
+                <NavLink to="/" exact className="row" activeClassName="row row--selected">
+                  <SVG src={home}/>
+                </NavLink>
+                <NavLink to="/dashboard" className="row" activeClassName="row row--selected">
+                  <SVG src={dashboard}/>
+                </NavLink>
+                <NavLink to="/settings" className="row" activeClassName="row row--selected">
+                  <SVG src={settings}/>
+                </NavLink>
+            </Sidebar>
 
-          <Route path="/" exact component={HomePage} />
+            <Route path="/" exact component={HomePage} />
+          </section>
           {/*<Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />*/}
         </div>
       </BrowserRouter>

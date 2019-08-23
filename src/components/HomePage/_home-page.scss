@@ -3,20 +3,25 @@ $home-padding: 0 10px 0 10px;
 
 
 .#{$baseClass} {
-  .header {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+
+  .booklist__header {
     border-bottom: solid silver 1px;
     padding: $home-padding;
-    display: table;
-    width: 80%;
-    position: relative;
-    left: 250px;
+    display: flex;
+    align-items: stretch;
+    //width: 80%;
+    //position: relative;
+    //left: 250px;
 
     div {
-      display: table-cell;
+      //display: table-cell;
     }
   }
 
-  .main {
+  .booklist__main {
     padding: $home-padding;
     margin-top: 10px;
   }

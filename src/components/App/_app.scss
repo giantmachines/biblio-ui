@@ -4,40 +4,60 @@ $baseClass: app;
 @import '../../styles/variables/fonts';
 
 .#{$baseClass} {
-   > .header {
-     border: solid silver 1px;
-     padding: 15px 50px 0 15px;
-     width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
-    .banner {
-      height: 72px;
-      width: 213px;
-    }
+   > section.main {
+     display: flex;
+     flex-direction: row;
+   }
+}
 
-    > .header-right {
-      position: absolute;
-      right: 100px;
-      top: 20px;
-    }
+.layout__header {
+  border: solid silver 1px;
+  //padding: 15px 50px 0 15px;
+  width: 100%;
+  display: flex;
+  justify-items: flex-start;
+}
 
-    > span {
-      cursor: pointer;
-      color: silver;
 
-      > .headshot {
-        height: 55px;
-        width: 55px;
-        background-color: #FFFFFF;
-      }
+.banner {
+  padding: 10px 10px 10px 10px;
+  height: 72px;
+  width: 213px;
+}
 
-      > .login {
-        position: absolute;
-        font-family: $site-label-font;
-        font-size: small;
-        top: 40%;
-        margin: 0 10px 0 10px;
-      }
-    }
+.header-right {
+  //position: absolute;
+  //right: 100px;
+  //top: 20px;
+}
+
+
+.user__container {
+  padding: 10px 10px 10px 10px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+
+
+  .headshot {
+    cursor: pointer;
+    color: silver;
+    height: 55px;
+    width: 55px;
+    background-color: #FFFFFF;
+  }
+
+
+  .login {
+    cursor: pointer;
+    color: silver;
+    font-family: $site-label-font;
+    font-size: small;
+    margin: 0 10px 0 10px;
   }
 }
 
@@ -52,7 +72,7 @@ $baseClass: app;
   position: absolute;
   top: 95px;
   bottom: 0;
-  height: 200%;
+  //height: 200%;
   width: 200px;
   background-color: $site-baseColor;
   border: none;
