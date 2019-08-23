@@ -1,6 +1,42 @@
 $baseClass: app;
 
 .#{$baseClass} {
+  > .header {
+    border: solid silver 1px;
+    padding: 15px 50px 0 15px;
+
+    .banner {
+      height: 72px;
+      width: 213px;
+    }
+
+    > .header-right {
+      position: absolute;
+      right: 100px;
+      top: 20px;
+    }
+
+    > span {
+      cursor: pointer;
+      color: silver;
+
+      > .headshot {
+        height: 55px;
+        width: 55px;
+        background-color: #FFFFFF;
+      }
+
+      > .login {
+        position: absolute;
+        font-family: "Helvetica Neue", "Lucida Grande", serif;
+        font-size: small;
+        top: 40%;
+        margin: 0 10px 0 10px;
+      }
+    }
+
+
+  }
 }
 
 :export {
