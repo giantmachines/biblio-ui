@@ -25,6 +25,24 @@ $baseClass: booklist;
   }
 }
 
+
+.details {
+
+  .details__section--top {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .review--form {
+
+  }
+
+  .review--content {
+
+  }
+}
+
+
 :export {
   baseClass: $baseClass
 }

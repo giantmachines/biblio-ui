@@ -6,10 +6,9 @@ import Rating from "./Rating";
 
 
 interface Props {
-    data: BookDetails;
     authenticated: boolean;
+    data: BookDetails;
 }
-
 
 interface ListProps {
     filter?: any;
@@ -21,64 +20,73 @@ interface ListProps {
 }
 
 
-interface ReviewProps {
-    rating: number;
-    content: string;
-    username: string;
-    dateReviewed: Date;
-}
-
-
-
-
-class Review extends React.Component<ReviewProps>{
-    constructor(props:ReviewProps){
-        super(props);
-    }
-
-    render() {
-        return (
-            <div>A review will be here.</div>
-        );
-    }
-}
+const Review = (props:ReviewDetails) => {
+    return (
+        <div key={uuid()}>
+            <div>{ props.user ? props.user.image : '' }</div>
+            <div>{ props.user ? props.user.name : '' }</div>
+            <div><Rating value={props.rating} /></div>
+            <div>{props.comment}</div>
+        </div>
+    );
+};
 
 
 
 class Book extends React.Component<Props>{
+
     static defaultProps = {
         authenticated: false,
-        data: {}
+        data: { } as BookDetails
     };
 
     constructor(props: Props) {
         super(props);
     }
 
-    getReviews(reviews:Array<any>){
+    getReviews(reviews: Array<ReviewDetails> | undefined){
+        reviews = reviews || [];
         return reviews.map(review => {
-            return new Review(review);
+            return Review(review);
         });
     }
 
+
+
     render(){
         const {data} = this.props;
+        console.log("book: ", data);
         return (
             <section className="details">
                 <section className="details__section--top">
-                    <div>{data.image}</div>
-                    <div>{data.image}</div>
+                    <div><img src={data.image} alt="Cover image" /></div>
+                    <h2>{data.title}</h2>
+                    <h3>{data.author}</h3>
+                    <p>{data.description}</p>
+                    { data.publisher ? (<div>Publisher:{data.publisher}</div>) : '' }
+                    <div>
+                        {data.rating ? `${data.rating}/5` : '' }
+                        <Rating value={data.rating} />
+                        <span>{ data.reviews ? `(${data.reviews.length} Ratings)` : '' }</span>
+                    </div>
                 </section>
                 <section className="details__section--center">
-                    <div>Form goes here</div>
+                    <h2>My Review</h2>
+                    <div>
+                        { this.props.authenticated ? (
+                            <div>review goes here</div>
+                        ) : (
+                            <div><a href="#">Login to write a review.</a></div>
+                        )}
+                    </div>
                 </section>
                 <section className="details__section--bottom">
+                    <h2>Other reviews</h2>
                     {this.getReviews(data.reviews)}
                 </section>
             </section>
         );
     }
-
 }
 
 
@@ -120,7 +128,7 @@ class BookList extends React.Component<ListProps> {
         const items = data.map((book:BookDetails) => {
             return (
                 <div key={uuid()} className="book">
-                    <div><img src={book.image} data-bookid={book.id} /></div>
+                    <div><img src={book.image} alt="Cover image" data-bookid={book.id} /></div>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
                     <div className={showStatus()}>{book.status}</div>

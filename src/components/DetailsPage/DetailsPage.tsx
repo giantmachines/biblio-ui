@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { baseClass } from './_details-page.scss';
-import {Book} from "../books/Books";
+import Book from "../books/BookContainer";
 
 interface Props {
 }
