@@ -5,12 +5,17 @@ $baseClass: wrapper;
 
 $local_padding: 10px 10px 10px 10px;
 
+html, body {
+  font: $site-text-font;
+  height: 105%;
+}
 
 .#{$baseClass} {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: stretch;
 
   .header {
     border: solid silver 1px;
@@ -102,6 +107,16 @@ $local_padding: 10px 10px 10px 10px;
 
 div#main {
   height: 100%;
+}
+
+.arrow--left {
+  border: solid $site-baseColor;
+  border-width: 0 7px 7px 0;
+  display: inline-block;
+  transform: rotate(135deg);
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 :export {

@@ -22,10 +22,15 @@ interface ListProps {
 
 const Review = (props:ReviewDetails) => {
     return (
-        <div key={uuid()}>
-            <div>{ props.user ? props.user.image : '' }</div>
-            <div>{ props.user ? props.user.name : '' }</div>
-            <div><Rating value={props.rating} /></div>
+        <div key={uuid()} className="review-container">
+            <div className="review--left">
+                <div>{props.user ? props.user.image : ''}</div>
+                <div>{props.user ? props.user.name : ''}</div>
+            </div>
+            <div className="review--top">
+                <div><Rating value={props.rating}/></div>
+                <div>{props.dateReviewed}</div>
+            </div>
             <div>{props.comment}</div>
         </div>
     );
@@ -57,20 +62,30 @@ class Book extends React.Component<Props>{
         const {data} = this.props;
         console.log("book: ", data);
         return (
-            <section className="details">
+            <section className="details__section--container">
                 <section className="details__section--top">
-                    <div><img src={data.image} alt="Cover image" /></div>
-                    <h2>{data.title}</h2>
-                    <h3>{data.author}</h3>
-                    <p>{data.description}</p>
-                    { data.publisher ? (<div>Publisher:{data.publisher}</div>) : '' }
-                    <div>
-                        {data.rating ? `${data.rating}/5` : '' }
-                        <Rating value={data.rating} />
-                        <span>{ data.reviews ? `(${data.reviews.length} Ratings)` : '' }</span>
+                    <div><img src={data.image} alt="Cover image" width="218.233" height="329" /></div>
+                    <div className="summary">
+                        <div>
+                            <div>
+                                <h2>{data.title}</h2>
+                                <h3>{data.author}</h3>
+                            </div>
+                            <div>
+                                {data.rating ? `${data.rating}/5` : '' }
+                                <Rating value={data.rating} />
+                                <span>{ data.reviews ? `(${data.reviews.length} Ratings)` : '' }</span>
+                            </div>
+                        </div>
+                        <p>{data.description}</p>
+                        { data.publisher ? (<div><i>Publisher:{data.publisher}</i></div>) : '' }
+                        <div>
+                            <br />
+                            <button>Login to checkout</button>
+                        </div>
                     </div>
                 </section>
-                <section className="details__section--center">
+                <section className="details__section--middle">
                     <h2>My Review</h2>
                     <div>
                         { this.props.authenticated ? (

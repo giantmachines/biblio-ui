@@ -1,14 +1,14 @@
 $baseClass: login-form;
 
-$login-margin: 15px;
-$login-padding: 15px;
-$login-color: #7BA98F;
-$login-bgcolor: #FFF;
+@import '../../styles/variables/colors';
+
+$local-margin: 15px;
+$local-padding: 15px;
 
 .#{$baseClass} {
   display: inline-block;
-  padding: $login-padding;
-  background-color: $login-bgcolor;
+  padding: $local-padding;
+  background-color: $site-bgColor;
 
   .center {
     margin-left: auto;
@@ -19,7 +19,7 @@ $login-bgcolor: #FFF;
   .title {
     height: 36px;
     width: 115px;
-    color: $login-color;
+    color: $site-baseColor;
     font-family: "SF Pro Text";
     font-size: 30px;
     font-weight: bold;
@@ -28,16 +28,16 @@ $login-bgcolor: #FFF;
 
   .rectangle {
     width: 388px;
-    margin: $login-margin 0 $login-margin 0;
+    margin: $local-margin 0 $local-margin 0;
 
     input[type=text]{
       height: 45px;
       width: 100%;
-      border: 1px solid $login-color;
+      border: 1px solid $site-baseColor;
       border-radius: 30px;
-      background-color: $login-bgcolor;
+      background-color: $site-bgColor;
       box-shadow: 0 0 9px 0 rgba(0,0,0,0.18);
-      padding: $login-padding;
+      padding: $local-padding;
     }
 
     input[type=submit]{
@@ -56,7 +56,7 @@ $login-bgcolor: #FFF;
   }
 
   .msg-positive {
-    color: $login-color;
+    color: $site-baseColor;
   }
 
   .msg-negative {
@@ -73,8 +73,8 @@ $login-bgcolor: #FFF;
     width: 95%;
     background-color: lightgoldenrodyellow;
     border: solid thin red;
-    padding: $login-padding;
-    margin-bottom: $login-margin;
+    padding: $local-padding;
+    margin-bottom: $local-margin;
     margin-left: auto;
     margin-right: auto;
   }

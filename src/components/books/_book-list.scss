@@ -1,10 +1,11 @@
 $baseClass: booklist;
 
+@import '../../styles/variables/colors';
+
 .#{$baseClass} {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-
 
   .book {
     flex: 0 0 15%;
@@ -22,23 +23,6 @@ $baseClass: booklist;
   img {
     max-width: 50%;
     cursor: pointer;
-  }
-}
-
-
-.details {
-
-  .details__section--top {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .review--form {
-
-  }
-
-  .review--content {
-
   }
 }
 
