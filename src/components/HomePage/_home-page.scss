@@ -1,6 +1,7 @@
 $baseClass: home;
 $home-padding: 0 20px 0 20px;
 
+@import '../../styles/variables/colors';
 
 .#{$baseClass} {
   flex-basis: 90%;
@@ -10,7 +11,7 @@ $home-padding: 0 20px 0 20px;
   padding: $home-padding;
 
   .booklist__section--header {
-    border-bottom: solid silver 1px;
+    border-bottom: $site-border;
     padding: $home-padding;
     display: flex;
     justify-items: flex-start;

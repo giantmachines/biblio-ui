@@ -1,6 +1,103 @@
-$baseClass: app;
+$baseClass: details;
+
+@import '../../styles/variables/colors';
 
 .#{$baseClass} {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 80%;  // Remember, this container is an item in another flexbox. Move to app.scss?
+  align-items: stretch;
+
+  > * {
+    padding-top: 50px;
+  }
+
+  > section {
+    flex: 0 1 70%;
+  }
+
+  /* This is the spacer column (with the back arrow) between
+  the sidebar and main sections. */
+  > div:nth-child(1) {
+      width: 10%;
+      text-align: center;
+   }
+
+  .details__section--container {
+    /* I set no flex here, thinking that the block elements
+    would naturally form a column. */
+
+    > section {
+      border-bottom: $site-border;
+      padding-bottom: 20px;
+    }
+
+    /* This is the section with the cover image and book details. */
+    .details__section--top {
+      display: flex;
+      flex-direction: row;
+      height: 30%;
+      min-height: 350px;
+      justify-content: space-evenly;
+
+      div:nth-child(1){
+        flex: 0 0 30%;
+      }
+
+      .summary {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 70%;  // The summary is child of another flexbox.
+
+        > div:nth-child(1) {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: baseline;
+          justify-content: space-between;
+
+          > div:nth-child(1) {
+            flex: 0 0 80%;
+          }
+          > div:nth-child(2) {
+            flex: 0 0 20%;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .details__section--middle {
+      > div:nth-child(2){
+        text-align: center;
+      }
+    }
+
+    .details__section--bottom {
+      .review--form {
+
+      }
+
+      .review--content {
+
+      }
+
+      .review-container {
+        border: $site-border;
+        border-radius: 25px;
+        padding: 20px 20px 20px 20px;
+        margin-bottom: 10px;
+        min-height: 100px;
+      }
+    }
+  }
+
+  button {
+    border: solid 1px $site-baseColor;
+    border-radius: 25px;
+    height: 48px;
+    width: 30%;
+    color: $site-baseColor;
+  }
 }
 
 :export {

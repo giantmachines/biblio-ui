@@ -5,7 +5,8 @@ const initialState: BookState = {
   books: [],
   memento: [],
   loading: false,
-  filter: null
+  filter: null,
+  selectedBook: {} as BookDetails
 };
 
 
@@ -32,7 +33,7 @@ export default (state: BookState = initialState, action: Action) => {
       result = {...state, selectedId: action.selectedId, loading: true};
       break;
     case 'FETCH_SELECTED_BOOK_SUCCESS':
-      result = {...state, books: action.payload};
+      result = {...state, selectedBook: action.payload};
       break;
     default: {
       result = state;

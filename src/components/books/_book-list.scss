@@ -1,10 +1,11 @@
 $baseClass: booklist;
 
+@import '../../styles/variables/colors';
+
 .#{$baseClass} {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-
 
   .book {
     flex: 0 0 15%;
@@ -24,6 +25,7 @@ $baseClass: booklist;
     cursor: pointer;
   }
 }
+
 
 :export {
   baseClass: $baseClass
