@@ -2,6 +2,10 @@ $baseClass: details;
 
 @import '../../styles/variables/colors';
 
+body {
+  background-color: $site-bgColor;
+}
+
 .#{$baseClass} {
   display: flex;
   flex-direction: row;
@@ -87,6 +91,7 @@ $baseClass: details;
         padding: 20px 20px 20px 20px;
         margin-bottom: 10px;
         min-height: 100px;
+        background-color: #FFFFFF;
       }
     }
   }
