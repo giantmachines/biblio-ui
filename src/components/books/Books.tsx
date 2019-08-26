@@ -6,6 +6,11 @@ import Rating from "./Rating";
 
 
 interface Props {
+    authenticated: boolean;
+    data: BookDetails;
+}
+
+interface ListProps {
     filter?: any;
     authenticated: boolean;
     books: Array<BookDetails>;
@@ -15,28 +20,100 @@ interface Props {
 }
 
 
+const Review = (props:ReviewDetails) => {
+    return (
+        <div key={uuid()} className="review-container">
+            <div className="review--left">
+                <div>{props.user ? props.user.image : ''}</div>
+                <div>{props.user ? props.user.name : ''}</div>
+            </div>
+            <div className="review--top">
+                <div><Rating value={props.rating}/></div>
+                <div>{props.dateReviewed}</div>
+            </div>
+            <div>{props.comment}</div>
+        </div>
+    );
+};
+
+
+
 class Book extends React.Component<Props>{
+
+    static defaultProps = {
+        authenticated: false,
+        data: { } as BookDetails
+    };
 
     constructor(props: Props) {
         super(props);
     }
 
-    render(){
-        return (<div>Hello</div>);
+    getReviews(reviews: Array<ReviewDetails> | undefined){
+        reviews = reviews || [];
+        return reviews.map(review => {
+            return Review(review);
+        });
     }
 
+
+
+    render(){
+        const {data} = this.props;
+        console.log("book: ", data);
+        return (
+            <section className="details__section--container">
+                <section className="details__section--top">
+                    <div><img src={data.image} alt="Cover image" width="218.233" height="329" /></div>
+                    <div className="summary">
+                        <div>
+                            <div>
+                                <h2>{data.title}</h2>
+                                <h3>{data.author}</h3>
+                            </div>
+                            <div>
+                                {data.rating ? `${data.rating}/5` : '' }
+                                <Rating value={data.rating} />
+                                <span>{ data.reviews ? `(${data.reviews.length} Ratings)` : '' }</span>
+                            </div>
+                        </div>
+                        <p>{data.description}</p>
+                        { data.publisher ? (<div><i>Publisher:{data.publisher}</i></div>) : '' }
+                        <div>
+                            <br />
+                            <button>Login to checkout</button>
+                        </div>
+                    </div>
+                </section>
+                <section className="details__section--middle">
+                    <h2>My Review</h2>
+                    <div>
+                        { this.props.authenticated ? (
+                            <div>review goes here</div>
+                        ) : (
+                            <div><a href="#">Login to write a review.</a></div>
+                        )}
+                    </div>
+                </section>
+                <section className="details__section--bottom">
+                    <h2>Other reviews</h2>
+                    {this.getReviews(data.reviews)}
+                </section>
+            </section>
+        );
+    }
 }
 
 
 
-class BookList extends React.Component<Props> {
+class BookList extends React.Component<ListProps> {
 
     static defaultProps = {
         authenticated: false,
         onBookSelected: (e:number) => {}
     };
 
-    constructor(props: Props) {
+    constructor(props: ListProps) {
         super(props);
     }
 
@@ -66,7 +143,7 @@ class BookList extends React.Component<Props> {
         const items = data.map((book:BookDetails) => {
             return (
                 <div key={uuid()} className="book">
-                    <div><img src={book.image} data-bookid={book.id} /></div>
+                    <div><img src={book.image} alt="Cover image" data-bookid={book.id} /></div>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
                     <div className={showStatus()}>{book.status}</div>
