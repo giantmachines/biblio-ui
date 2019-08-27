@@ -1,11 +1,13 @@
 import {baseClass} from './_login-form.scss';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
+import {Authenticate} from "../../redux/me";
 
 interface Props {
     url: string;
     onSuccess: Function;
     onFailure: Function;
+    authenticate: Authenticate;
 }
 
 interface State {
@@ -41,20 +43,9 @@ class LoginForm extends React.Component<Props, State, LoginFormData> {
        }
     }
 
-    login(data:LoginFormData){
-        const options = {
-            method: 'POST',
-            body: JSON.stringify(data)
-        };
-        fetch(this.props.url, options)
-            .then(response => {
-                if (!response.ok){
-                    throw new Error(response.statusText || "A login error occurred.");
-                }
-                return response;
-            })
-            .then(this.onSuccess.bind(this))
-            .catch(this.onFailure.bind(this));
+    async login(data:LoginFormData){
+        await this.props.authenticate(data);
+        this.onSuccess();
     }
 
     onSuccess(){

@@ -6,7 +6,7 @@ import { baseClass } from './_app.scss';
 import HomePage from '../HomePage';
 import configureStore from '../../configureStore';
 import Dialog from "../layout/Dialog";
-import LoginForm from "../LoginModal/LoginForm";
+import LoginForm from "../LoginModal/LoginFormtContainer";
 import {Header, Sidebar} from "../layout";
 // @ts-ignore
 import banner from "./images/Giant-Machines_Logo_BW.svg";
