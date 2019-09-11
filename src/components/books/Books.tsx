@@ -57,10 +57,19 @@ class Book extends React.Component<Props>{
     }
 
 
-
     render(){
-        const {data} = this.props;
-        console.log("book: ", data);
+        const {data, authenticated} = this.props;
+        const renderCheckoutBtn = () => {
+            if (!authenticated){
+                return (<button>Login to checkout</button>);
+            }
+
+            if (data.available){
+                return (<button>Checkout</button>);
+            }
+            // TODO: Return if the user has the book.
+        };
+
         return (
             <section className="details__section--container">
                 <section className="details__section--top">
@@ -81,14 +90,14 @@ class Book extends React.Component<Props>{
                         { data.publisher ? (<div><i>Publisher:{data.publisher}</i></div>) : '' }
                         <div>
                             <br />
-                            <button>Login to checkout</button>
+                            { renderCheckoutBtn() }
                         </div>
                     </div>
                 </section>
                 <section className="details__section--middle">
                     <h2>My Review</h2>
                     <div>
-                        { this.props.authenticated ? (
+                        { authenticated ? (
                             <div>review goes here</div>
                         ) : (
                             <div><a href="#">Login to write a review.</a></div>
@@ -135,18 +144,25 @@ class BookList extends React.Component<ListProps> {
 
     render(){
         const { books, authenticated, filter } = this.props;
-        const showStatus = () => {
-            return authenticated ? 'book__div--on' : 'book__div--off'
+        const data = filter != null ? filter(books) : books;
+        const renderStatus = () => {
+            const status = data.available === false ? 'Unavailable' : 'Available';
+            if (authenticated){
+                return (
+                    <div>{status}</div>
+                )
+            } else {
+                return '';
+            }
         };
 
-        const data = filter != null ? filter(books) : books;
         const items = data.map((book:BookDetails) => {
             return (
                 <div key={uuid()} className="book">
                     <div><img src={book.image} alt="Cover image" data-bookid={book.id} /></div>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
-                    <div className={showStatus()}>{book.status}</div>
+                    {renderStatus()}
                     <div><Rating value={book.rating} /></div>
                 </div>
             );

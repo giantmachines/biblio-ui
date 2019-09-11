@@ -10,10 +10,10 @@ const URL_GET_SELECTED_BOOK = `https://library-platform-staging.herokuapp.com/bo
 const adapt = (book:any):BookDetails => {
     book.rating = book.rating || book.reviewAverage;
     book.image = book.image || book.book_image;
+    book.available = !book.isCheckedOut;
     (book.reviews || []).forEach((review:any) => {
         review.comment = review.comment || review.description;
     });
-
     return book;
 };
 

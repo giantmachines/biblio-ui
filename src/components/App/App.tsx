@@ -42,7 +42,6 @@ const App = () => {
     show();
   };
   const isActive = (match:any, location:any) => {
-    console.log(location)
     return location.pathname === '/' || location.pathname.startsWith('/books/');
   };
 

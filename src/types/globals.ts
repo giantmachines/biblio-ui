@@ -13,7 +13,7 @@ declare global {
     author: string;
     description: string;
     publisher: string;
-    status: string;
+    available: boolean;
     rating: number;
     reviews?: Array<ReviewDetails>;
   }
