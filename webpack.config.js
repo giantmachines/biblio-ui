@@ -13,6 +13,13 @@ if (!isProduction) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
+// PF
+const targets = [
+  `http://localhost:${SERVER_PORT}`,
+  'https://library-platform-staging.herokuapp.com',
+  'http://174.138.125.247'
+];
+
 module.exports = {
   mode: NODE_ENV,
   entry: './src/index.tsx',
@@ -76,13 +83,19 @@ module.exports = {
     }),
   ],
   devServer: {
+    index: "",
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     hot: true,
     inline: true,
     port: CLIENT_PORT,
     proxy: {
-      '/api': `http://localhost:${SERVER_PORT}`,
-    },
+      '/api': {
+        target: targets[2],
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {'^/api' : ''}
+      }
+    }
   },
 };

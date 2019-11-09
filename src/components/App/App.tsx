@@ -34,7 +34,7 @@ const App = () => {
   const [authenticate, setAuthenticate] = React.useState(false);
   const update = () => setAuthenticate(v => !v);
   const show = () => setAuthenticate(() => true);
-  const LOGIN_URL = 'https://library-platform-staging.herokuapp.com/login';
+  const LOGIN_URL = '/api/login';
   const onSuccess = () => {
     update();
   };

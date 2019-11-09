@@ -2,8 +2,8 @@ import {put, takeLatest} from 'redux-saga/effects';
 import {fetchAllBooksSuccess, fetchSelectedBookSuccess} from "./actions";
 
 // TODO: externalize these.
-const URL_GET_ALL_BOOKS = 'https://library-platform-staging.herokuapp.com/books';
-const URL_GET_SELECTED_BOOK = `https://library-platform-staging.herokuapp.com/books/{id}`;
+const URL_GET_ALL_BOOKS = `/api/books`;
+const URL_GET_SELECTED_BOOK = `/api/books/{id}`;
 
 
 // TODO: create multiple adapters configurable for the expected API instance.
@@ -14,6 +14,9 @@ const adapt = (book:any):BookDetails => {
     (book.reviews || []).forEach((review:any) => {
         review.comment = review.comment || review.description;
     });
+
+    const {author} = book;
+    book.author = typeof author !== 'string' ? `${author.firstName} ${author.lastName}` : author;
     return book;
 };
 
