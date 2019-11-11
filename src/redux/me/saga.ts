@@ -1,12 +1,13 @@
 import { put, takeLatest } from "redux-saga/effects";
 import {authenticationSuccess} from "./actions";
 
-const LOGIN_URL='https://library-platform-staging.herokuapp.com/login';
+import {authenticationEndpoint} from "../../config";
 
 function* watchAuthenticate(action:any){
     const {formData} = action;
     const request = {method: 'POST', body: JSON.stringify(formData)};
-    const response = yield fetch(LOGIN_URL, request);
+    const response = yield fetch(authenticationEndpoint, request);
+    const authorization = response.headers.get('authorization');
     const data = yield response.text();
 
     yield put(authenticationSuccess(data));

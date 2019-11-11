@@ -94,7 +94,7 @@ module.exports = {
         target: targets[2],
         secure: false,
         changeOrigin: true,
-        pathRewrite: {'^/api' : ''}
+        pathRewrite: {'^/api' : '/api/v1'}
       }
     }
   },
