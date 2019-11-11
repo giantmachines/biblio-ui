@@ -26,6 +26,7 @@ import settings from "./images/settings_normal.svg"
 import settings_checked from "./images/settings_checked.svg"
 import SVG from 'react-inlinesvg';
 import DetailsPage from "../DetailsPage";
+import {authenticationEndpoint} from "../../config";
 
 
 const store = configureStore();
@@ -34,7 +35,6 @@ const App = () => {
   const [authenticate, setAuthenticate] = React.useState(false);
   const update = () => setAuthenticate(v => !v);
   const show = () => setAuthenticate(() => true);
-  const LOGIN_URL = '/api/login';
   const onSuccess = () => {
     update();
   };
@@ -62,7 +62,7 @@ const App = () => {
           <Dialog visible={authenticate}
                   onClose={update}
                   overlay={true}>
-            <LoginForm url={LOGIN_URL}
+            <LoginForm url={authenticationEndpoint}
                        onSuccess={onSuccess}
                        onFailure={onFailure} />
           </Dialog>
