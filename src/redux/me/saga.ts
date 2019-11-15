@@ -1,5 +1,6 @@
+import * as cache from "localforage";
 import { put, takeLatest } from "redux-saga/effects";
-import {authenticationSuccess} from "./actions";
+import {authenticationSuccess, authenticationFailure} from "./actions";
 
 import {authenticationEndpoint} from "../../config";
 
@@ -17,10 +18,14 @@ function* watchAuthenticate(action:any){
         body: encodeForm(formData)
     };
     const response = yield fetch(authenticationEndpoint, request);
-    //const authorization = response.headers.get('authorization');
     const data = yield response.text();
-
-    yield put(authenticationSuccess(data));
+    if (response.ok) {
+        cache.setItem("biblio-token", response.headers.get('authorization'));
+        yield put(authenticationSuccess(data));
+    } else {
+        cache.removeItem("biblio-token");
+        yield put(authenticationFailure(data))
+    }
 }
 
 export default function* () {

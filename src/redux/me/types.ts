@@ -6,4 +6,6 @@ export interface Me {
 export interface MeState {
   user: Me | null;
   authenticated: boolean;
+  error: string | null;
+  pending: boolean;
 }

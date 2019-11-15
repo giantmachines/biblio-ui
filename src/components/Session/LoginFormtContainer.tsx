@@ -5,7 +5,10 @@ import LoginForm from "./LoginForm";
 
 function mapStateToProps(state:Store){
     return {
-        authenticated: state.me.authenticated
+        authenticated: state.me.authenticated,
+        error: state.me.error,
+        user: state.me.user,
+        pending: state.me.pending
     }
 }
 

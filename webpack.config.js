@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
-const { CLIENT_PORT = 8080, NODE_ENV = 'development', SERVER_PORT = 3000 } = process.env;
+const { CLIENT_PORT = 3000, NODE_ENV = 'development', SERVER_PORT = 8080 } = process.env;
 
 const isProduction = NODE_ENV === 'production';
 
@@ -91,7 +91,7 @@ module.exports = {
     port: CLIENT_PORT,
     proxy: {
       '/api': {
-        target: targets[2],
+        target: targets[0],
         secure: false,
         changeOrigin: true,
         logLevel: 'debug'
