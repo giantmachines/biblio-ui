@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {Store} from "../../configureStore";
-//import {invalidate} from '../../redux/me';
+import {invalidate} from '../../redux/me';
 import Headshot from "./Headshot";
 
 function mapStateToProps(state:Store){
@@ -12,7 +12,7 @@ function mapStateToProps(state:Store){
 }
 
 const mapDispatchToProps = {
-    //invalidate
+    logoutAction: invalidate
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Headshot);
