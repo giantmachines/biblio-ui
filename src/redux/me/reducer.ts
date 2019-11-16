@@ -21,6 +21,8 @@ export default (state: MeState = initialState, action: Action) => {
       return {...state, payload: action.payload, error: null, pending: false, authenticated: true};
     case 'AUTHENTICATION_FAILURE':
       return {...state, payload: action.payload, error: "Authentication failed", pending: false, authenticated: false};
+    case 'INVALIDATE':
+      return {...state, payload: action.payload, user: null, authenticated: false};
     default: {
       return state;
     }

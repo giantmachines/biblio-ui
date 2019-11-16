@@ -1,6 +1,6 @@
 import * as cache from "localforage";
 import { put, takeLatest } from "redux-saga/effects";
-import {authenticationSuccess, authenticationFailure} from "./actions";
+import {authenticationSuccess, authenticationFailure, invalidate} from "./actions";
 
 import {authenticationEndpoint} from "../../config";
 
@@ -28,6 +28,12 @@ function* watchAuthenticate(action:any){
     }
 }
 
+function* watchInvalidate(){
+    yield fetch(authenticationEndpoint, {method: 'DELETE'});
+    yield put(invalidate());
+}
+
 export default function* () {
     yield takeLatest('AUTHENTICATE', watchAuthenticate);
+    yield takeLatest('INVALIDATE', watchInvalidate);
 }
