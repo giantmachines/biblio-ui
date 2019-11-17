@@ -31,14 +31,9 @@ import Headshot from "../Session/HeadshottContainer";
 const store = configureStore();
 
 const App = () => {
-  const [authenticated, setAuthenticated] = React.useState(false);
   const [loginFormVisible, setLoginFormVisible] = React.useState(false);
   const hide = () => setLoginFormVisible(false);
   const show = () => setLoginFormVisible(true);
-  const onSuccess = () => {
-    hide();
-    setAuthenticated(true);
-  };
   const isActive = (match:any, location:any) => {
     return location.pathname === '/' || location.pathname.startsWith('/books/');
   };
@@ -51,16 +46,14 @@ const App = () => {
             <Link to="/">
               <SVG src={banner} className="banner" />
             </Link>
-            <Headshot authenticated={authenticated}
-                      loginAction={show}
-                      logoutAction={()=>setAuthenticated(false)} />
+            <Headshot loginAction={show} />
           </Header>
 
           <Dialog visible={loginFormVisible}
                   onClose={hide}
                   overlay={true}>
             <LoginForm url={authenticationEndpoint}
-                       onSuccess={onSuccess}
+                       onSuccess={hide}
                        onFailure={show} />
           </Dialog>
 

@@ -34,16 +34,12 @@ function* watchFetchActiveBooks() {
 function* watchFetchSelectedBook(action?:any){
     const {selectedId} = action;
     const url = selectedBookEndpoint.replace('{id}', selectedId);
-    // TODO: remove this
-    const headers = {
-        authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYWYxNjg3QGdtYWlsLmNvbSIsImV4cCI6MTU2NzQ3NDg0OX0.g2UANZFp0mpDruGgvuIyi_L8MYO5Qm21QNswFmiBM4oKpgwPi85AQJgWlYhWdxoGB-UqFD71x65Yfzk_DapwbQ'
-    };
-    const response = yield $fetch(url, { headers: headers });
+    const response = yield $fetch(url);
     const data = yield response.json();
     const book = adapt(data);
-
     yield put(fetchSelectedBookSuccess(book));
 }
+
 
 
 export default function* () {

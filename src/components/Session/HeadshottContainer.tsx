@@ -12,7 +12,7 @@ function mapStateToProps(state:Store){
 }
 
 const mapDispatchToProps = {
-    logoutAction: invalidate
+    invalidate
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Headshot);

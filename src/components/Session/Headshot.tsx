@@ -8,8 +8,7 @@ import {MouseEventHandler} from "react";
 interface Props {
     authenticated: Boolean;
     loginAction: MouseEventHandler;
-    logoutAction: MouseEventHandler;
-    invalidate: Invalidate;
+    invalidate: Invalidate | Function;
     user: UserDetails | null;
 }
 
@@ -25,7 +24,10 @@ class Headshot extends React.Component<Props> {
     }
 
     render(){
-        const {authenticated, logoutAction, loginAction} = this.props;
+        const {authenticated, loginAction, invalidate} = this.props;
+        const logoutAction = () => {
+            invalidate();
+        };
 
         if (authenticated){
             return (
