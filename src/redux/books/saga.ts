@@ -1,4 +1,4 @@
-import {put, takeLatest} from 'redux-saga/effects';
+import {put, takeLatest, join} from 'redux-saga/effects';
 import {fetchAllBooksSuccess, fetchSelectedBookSuccess} from "./actions";
 import {allBooksEndpoint, selectedBookEndpoint} from "../../config";
 import {$fetch} from "../util";

@@ -26,6 +26,7 @@ import SVG from 'react-inlinesvg';
 import DetailsPage from "../DetailsPage";
 import {authenticationEndpoint} from "../../config";
 import Headshot from "../Session/HeadshottContainer";
+import SessionStatus from "../Session/SessionStatus";
 
 
 const store = configureStore();
@@ -40,6 +41,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <SessionStatus />
       <BrowserRouter>
         <div className={baseClass}>
           <Header className="header">
