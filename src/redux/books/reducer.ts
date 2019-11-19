@@ -29,7 +29,6 @@ export default (state: BookState = initialState, action: Action) => {
       result = {...state, books: action.payload};
       break;
     case 'FETCH_SELECTED_BOOK':
-      console.log('Fetch Book:', action);
       result = {...state, selectedId: action.selectedId, loading: true};
       break;
     case 'FETCH_SELECTED_BOOK_SUCCESS':

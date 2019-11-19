@@ -91,7 +91,7 @@ module.exports = {
     port: CLIENT_PORT,
     proxy: {
       '/api': {
-        target: targets[0],
+        target: targets[2],
         secure: false,
         changeOrigin: true,
         logLevel: 'debug'

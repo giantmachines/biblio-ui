@@ -25,42 +25,37 @@ import settings_checked from "./images/settings_checked.svg"
 import SVG from 'react-inlinesvg';
 import DetailsPage from "../DetailsPage";
 import {authenticationEndpoint} from "../../config";
-import Headshot from "../Session/HeadshottContainer";
+import Headshot from "../Session/HeadshotContainer";
+import SessionStatus from "../Session/SessionStatus";
 
 
 const store = configureStore();
 
 const App = () => {
-  const [authenticated, setAuthenticated] = React.useState(false);
   const [loginFormVisible, setLoginFormVisible] = React.useState(false);
   const hide = () => setLoginFormVisible(false);
   const show = () => setLoginFormVisible(true);
-  const onSuccess = () => {
-    hide();
-    setAuthenticated(true);
-  };
   const isActive = (match:any, location:any) => {
     return location.pathname === '/' || location.pathname.startsWith('/books/');
   };
 
   return (
     <Provider store={store}>
+      <SessionStatus />
       <BrowserRouter>
         <div className={baseClass}>
           <Header className="header">
             <Link to="/">
               <SVG src={banner} className="banner" />
             </Link>
-            <Headshot authenticated={authenticated}
-                      loginAction={show}
-                      logoutAction={()=>setAuthenticated(false)} />
+            <Headshot loginAction={show} />
           </Header>
 
           <Dialog visible={loginFormVisible}
                   onClose={hide}
                   overlay={true}>
             <LoginForm url={authenticationEndpoint}
-                       onSuccess={onSuccess}
+                       onSuccess={hide}
                        onFailure={show} />
           </Dialog>
 
