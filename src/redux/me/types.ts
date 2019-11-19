@@ -1,7 +1,11 @@
 export interface Me {
+  image: string;
   name: string;
 }
 
 export interface MeState {
-  info: Me | null;
+  user: Me | null;
+  authenticated: boolean;
+  error: string | null;
+  pending: boolean;
 }

@@ -1,22 +1,15 @@
 $baseClass: booklist;
 
+@import '../../styles/variables/colors';
+
 .#{$baseClass} {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
 
-
   .book {
-    flex: 0 0 20%;
+    flex: 0 0 15%;
     margin-bottom: 5%;
-  }
-
-  .book__div--on {
-    display: block;
-  }
-
-  .book__div--off {
-    display: none;
   }
 
   img {
@@ -24,6 +17,7 @@ $baseClass: booklist;
     cursor: pointer;
   }
 }
+
 
 :export {
   baseClass: $baseClass

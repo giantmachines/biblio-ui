@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {baseClass} from './_home-page.scss';
-import BookList from "../books/BooksContainer";
+import BookList from "../books/BookListContainer";
 import FilterBox from "../filtering/FilterBox";
 import {byAuthorOrTitle} from "../filtering/filterTypes";
 

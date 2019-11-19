@@ -1,7 +1,7 @@
 import {baseClass} from './_dialog.scss';
 import * as React from "react";
 import ReactDOM from 'react-dom';
-import Overlay from "../LoginModal/Overlay";
+import Overlay from "../Session/Overlay";
 
 interface Props {
     visible: boolean;
@@ -31,6 +31,7 @@ class Dialog extends React.Component<Props, State> {
                 memento: props.visible
             };
         }
+        return null;
     }
 
     constructor(props: Props) {

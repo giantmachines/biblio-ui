@@ -1,8 +1,18 @@
 $baseClass: filter-box;
 
 .#{$baseClass} {
-  float: right;
-  margin: 0 25px 0 25px;
+  display: table;
+
+  > * {
+    display: table-cell;
+  }
+
+  input {
+    height: 36px;
+    width: 169px;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
 }
 
 :export {

@@ -6,12 +6,10 @@ import { baseClass } from './_app.scss';
 import HomePage from '../HomePage';
 import configureStore from '../../configureStore';
 import Dialog from "../layout/Dialog";
-import LoginForm from "../LoginModal/LoginForm";
+import LoginForm from "../Session/LoginFormtContainer";
 import {Header, Sidebar} from "../layout";
 // @ts-ignore
 import banner from "./images/Giant-Machines_Logo_BW.svg";
-// @ts-ignore
-import headshot from "./images/headshot.svg"
 // @ts-ignore
 import home from "./images/homepage_normal.svg"
 // @ts-ignore
@@ -25,19 +23,24 @@ import settings from "./images/settings_normal.svg"
 // @ts-ignore
 import settings_checked from "./images/settings_checked.svg"
 import SVG from 'react-inlinesvg';
+import DetailsPage from "../DetailsPage";
+import {authenticationEndpoint} from "../../config";
+import Headshot from "../Session/HeadshottContainer";
+
 
 const store = configureStore();
 
 const App = () => {
-  const [authenticate, setAuthenticate] = React.useState(false);
-  const update = () => setAuthenticate(v => !v);
-  const show = () => setAuthenticate(() => true);
-  const LOGIN_URL = 'https://library-platform-staging.herokuapp.com/login';
+  const [authenticated, setAuthenticated] = React.useState(false);
+  const [loginFormVisible, setLoginFormVisible] = React.useState(false);
+  const hide = () => setLoginFormVisible(false);
+  const show = () => setLoginFormVisible(true);
   const onSuccess = () => {
-    update();
+    hide();
+    setAuthenticated(true);
   };
-  const onFailure = () => {
-    show();
+  const isActive = (match:any, location:any) => {
+    return location.pathname === '/' || location.pathname.startsWith('/books/');
   };
 
   return (
@@ -48,37 +51,45 @@ const App = () => {
             <Link to="/">
               <SVG src={banner} className="banner" />
             </Link>
-            <span className="user-container" onClick={update}>
-              <SVG src={headshot} />
-              <span>Login</span>
-            </span>
+            <Headshot authenticated={authenticated}
+                      loginAction={show}
+                      logoutAction={()=>setAuthenticated(false)} />
           </Header>
 
-          <Dialog visible={authenticate} onClose={update} overlay={true}>
-            <LoginForm url={LOGIN_URL}
+          <Dialog visible={loginFormVisible}
+                  onClose={hide}
+                  overlay={true}>
+            <LoginForm url={authenticationEndpoint}
                        onSuccess={onSuccess}
-                       onFailure={onFailure} />
+                       onFailure={show} />
           </Dialog>
 
           <section className="main">
             <Sidebar>
-                <NavLink to="/" exact className="row" activeClassName="row row--selected">
+                <NavLink to="/"
+                         isActive={isActive}
+                         className="row"
+                         activeClassName="row row--selected">
                   <SVG src={home} className="inactive"/>
                   <SVG src={home_checked} className="active"/>
                 </NavLink>
-                <NavLink to="/dashboard" className="row" activeClassName="row row--selected">
+                <NavLink to="/dashboard"
+                         className="row"
+                         activeClassName="row row--selected">
                   <SVG src={dashboard} className="inactive" />
                   <SVG src={dashboard_checked} className="active" />
                 </NavLink>
-                <NavLink to="/settings" className="row" activeClassName="row row--selected">
+                <NavLink to="/settings"
+                         className="row"
+                         activeClassName="row row--selected">
                   <SVG src={settings} className="inactive" />
                   <SVG src={settings_checked} className="active" />
                 </NavLink>
             </Sidebar>
 
             <Route path="/" exact component={HomePage} />
+            <Route path="/books/:id" exact render={() => <DetailsPage />} />
           </section>
-          {/*<Route path="/details/:id" exact render={() => <DetailsPage counter={counter} />} />*/}
         </div>
       </BrowserRouter>
     </Provider>

@@ -1,11 +1,18 @@
-import { createAsyncAction } from 'typesafe-actions';
+export const authenticate = (formData:any) => {
+  return {type: 'AUTHENTICATE', formData:formData};
+};
 
-interface Me {
-  name: string;
-}
-/* eslint-disable-next-line import/prefer-default-export */
-export const setMe = createAsyncAction('SET_ME_REQUEST', 'SET_ME_SUCCESS', 'SET_ME_FAILURE')<
-  Me,
-  Me,
-  Error
->();
+export const authenticationSuccess = (data:UserDetails) => {
+  return {type: 'AUTHENTICATION_SUCCESS', payload: data};
+};
+
+export const authenticationFailure = (response:any) => {
+  return {type: 'AUTHENTICATION_FAILURE', payload: response || "Authentication failed."};
+};
+
+export const invalidate = () => {
+   return {type: 'INVALIDATE'};
+};
+
+export type Authenticate = typeof authenticate;
+export type Invalidate = typeof invalidate;

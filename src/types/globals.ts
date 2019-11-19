@@ -11,18 +11,23 @@ declare global {
     title: string;
     image: string;
     author: string;
-    status: string;
+    description: string;
+    publisher: string;
+    available: boolean;
     rating: number;
+    reviews?: Array<ReviewDetails>;
   }
 
-  interface BookListState {
-    books: Array<BookDetails>;
-    memento: Array<BookDetails>;
+  interface ReviewDetails {
+    rating: number;
+    comment: string;
+    user: UserDetails;
+    dateReviewed: Date;
   }
 
-  interface FilterType {
-    key: string;
-    value: string;
+  interface UserDetails {
+    image: string;
+    name: string;
   }
 
 }

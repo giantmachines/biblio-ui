@@ -1,6 +1,7 @@
 import {baseClass} from './_filter-box.scss';
 import * as React from 'react';
 import {ChangeEvent} from "react";
+import * as uuid from 'uuid/v4';
 
 interface Props {
     name: string;
@@ -22,14 +23,15 @@ function onChange(next:any, filter:Function, e:ChangeEvent<HTMLInputElement>){
 export default function FilterBox(props: Props){
     const className = props.className || 'filter-box';
     const {type} = props;
+    const id = uuid();
     return (
         <div className={baseClass}>
-            <label>Filter By:
-                <input type="text"
-                       name={props.name}
-                       onChange={onChange.bind(null, props.onChange, type)}
-                       className={className}/>
-            </label>
+            <label htmlFor={id}>Filter By:</label>
+            <input type="text"
+                   id={id}
+                   name={props.name}
+                   onChange={onChange.bind(null, props.onChange, type)}
+                   className={className}/>
         </div>
     );
 }

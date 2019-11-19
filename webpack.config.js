@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
-const { CLIENT_PORT = 8080, NODE_ENV = 'development', SERVER_PORT = 3000 } = process.env;
+const { CLIENT_PORT = 3000, NODE_ENV = 'development', SERVER_PORT = 8080 } = process.env;
 
 const isProduction = NODE_ENV === 'production';
 
@@ -12,6 +12,13 @@ const plugins = [];
 if (!isProduction) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
+
+// PF
+const targets = [
+  `http://localhost:${SERVER_PORT}`,
+  'https://library-platform-staging.herokuapp.com',
+  'http://174.138.125.247'
+];
 
 module.exports = {
   mode: NODE_ENV,
@@ -76,13 +83,19 @@ module.exports = {
     }),
   ],
   devServer: {
+    index: "",
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     hot: true,
     inline: true,
     port: CLIENT_PORT,
     proxy: {
-      '/api': `http://localhost:${SERVER_PORT}`,
-    },
+      '/api': {
+        target: targets[0],
+        secure: false,
+        changeOrigin: true,
+        logLevel: 'debug'
+      }
+    }
   },
 };

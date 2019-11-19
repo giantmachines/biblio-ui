@@ -7,7 +7,8 @@ function mapStateToProps(state:Store){
     return {
         books: state.books.books,
         memento: state.books.memento,
-        loading: state.books.loading
+        loading: state.books.loading,
+        authenticated: state.me.authenticated
     }
 }
 
