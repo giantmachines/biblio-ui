@@ -25,7 +25,7 @@ import settings_checked from "./images/settings_checked.svg"
 import SVG from 'react-inlinesvg';
 import DetailsPage from "../DetailsPage";
 import {authenticationEndpoint} from "../../config";
-import Headshot from "../Session/HeadshottContainer";
+import Headshot from "../Session/HeadshotContainer";
 import SessionStatus from "../Session/SessionStatus";
 
 
