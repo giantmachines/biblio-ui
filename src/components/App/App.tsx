@@ -6,7 +6,7 @@ import { baseClass } from './_app.scss';
 import HomePage from '../HomePage';
 import configureStore from '../../configureStore';
 import Dialog from "../layout/Dialog";
-import LoginForm from "../Session/LoginFormtContainer";
+import LoginForm from "../sesson/LoginFormtContainer";
 import {Header, Sidebar} from "../layout";
 // @ts-ignore
 import banner from "./images/Giant-Machines_Logo_BW.svg";
@@ -25,8 +25,9 @@ import settings_checked from "./images/settings_checked.svg"
 import SVG from 'react-inlinesvg';
 import DetailsPage from "../DetailsPage";
 import {authenticationEndpoint} from "../../config";
-import Headshot from "../Session/HeadshotContainer";
-import SessionStatus from "../Session/SessionStatus";
+import Headshot from "../sesson/HeadshotContainer";
+import SessionStatus from "../sesson/SessionStatus";
+import Dashboard from "../Dashboard/Dashboard";
 
 
 const store = configureStore();
@@ -84,6 +85,7 @@ const App = () => {
 
             <Route path="/" exact component={HomePage} />
             <Route path="/books/:id" exact render={() => <DetailsPage />} />
+            <Route path="/dashboard" exact render={() => <Dashboard />} />
           </section>
         </div>
       </BrowserRouter>

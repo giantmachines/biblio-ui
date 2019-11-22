@@ -1,7 +1,7 @@
 {
-  "name": "react-bootcamp",
+  "name": "bublio-ui",
   "version": "1.0.0",
-  "description": "React + Redux + TypeScript Bootcamp",
+  "description": "client for the Biblio platform.  Uses  React + Redux + TypeScript",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .jsx,.js,.tsx,.ts src/",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006"
   },
-  "author": "Ho Won Cheng",
+  "author": "Philip Ford",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "7.4.4",

@@ -1,7 +1,7 @@
 import {baseClass} from './_dialog.scss';
 import * as React from "react";
 import ReactDOM from 'react-dom';
-import Overlay from "../Session/Overlay";
+import Overlay from "../sesson/Overlay";
 
 interface Props {
     visible: boolean;
