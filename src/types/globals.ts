@@ -30,4 +30,14 @@ declare global {
     name: string;
   }
 
+  interface BookCriteria {
+    id?: number;
+    title?: string;
+    author?: string;
+    description?: string;
+    publisher?: string;
+    available: boolean;
+    reviewer?: string;
+    userId?: string;
+  }
 }

@@ -1,6 +1,6 @@
 import {put, takeLatest, join} from 'redux-saga/effects';
 import {fetchAllBooksSuccess, fetchSelectedBookSuccess} from "./actions";
-import {allBooksEndpoint, selectedBookEndpoint} from "../../config";
+import {allBooksEndpoint, reviewedBooksEndpoint, searchBooksEndpoint, selectedBookEndpoint} from "../../config";
 import {$fetch} from "../util";
 
 
@@ -22,11 +22,9 @@ const adapt = (book:any):BookDetails => {
 function* watchFetchActiveBooks() {
     const response = yield $fetch(allBooksEndpoint);
     const data = yield response.json();
-    const books = data.map(adapt)
-        .sort((a:BookDetails, b:BookDetails):number => {
+    const books = data.map(adapt).sort((a:BookDetails, b:BookDetails):number => {
             return a.title > b.title ? 1 : (a.title < b.title ? -1 : 0);
         });
-
     yield put(fetchAllBooksSuccess(books));
 }
 
@@ -41,8 +39,29 @@ function* watchFetchSelectedBook(action?:any){
 }
 
 
+function* watchFetchReviewedBooks() {
+    const response = yield $fetch(searchBooksEndpoint);
+    const data = yield response.json();
+    const books = data.map(adapt).sort((a:BookDetails, b:BookDetails):number => {
+            return a.title > b.title ? 1 : (a.title < b.title ? -1 : 0);
+        });
+    yield put(fetchAllBooksSuccess(books));
+}
+
+
+function* watchSearchBooks() {
+    const response = yield $fetch(searchBooksEndpoint);
+    const data = yield response.json();
+    const books = data.map(adapt).sort((a:BookDetails, b:BookDetails):number => {
+        return a.title > b.title ? 1 : (a.title < b.title ? -1 : 0);
+    });
+    yield put(fetchAllBooksSuccess(books));
+}
+
 
 export default function* () {
     yield takeLatest('FETCH_ALL_BOOKS', watchFetchActiveBooks);
     yield takeLatest('FETCH_SELECTED_BOOK', watchFetchSelectedBook);
+    yield takeLatest('FETCH_REVIEWED_BOOKS', watchFetchReviewedBooks);
+    yield takeLatest('SEARCH_BOOKS', watchSearchBooks);
 }

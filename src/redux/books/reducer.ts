@@ -22,6 +22,8 @@ export default (state: BookState = initialState, action: Action) => {
   let result;
 
   switch (action.type) {
+    case 'SEARCH_BOOKS':
+    case 'FETCH_REVIEWED_BOOKS':
     case 'FETCH_ALL_BOOKS':
       result = {...state, loading: true};
       break;
